@@ -1,0 +1,83 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card p-3 m-5">
+        <h2 class="text-center">Registration here</h2>
+        <form #registerForm="ngForm" (ngSubmit)="registerForm.form.valid && register(registerForm)" [appMatchPassword]="['password', 'confirmPassword']" novalidate>
+          <div class="mb-3">
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-control" [(ngModel)]="usersModal.name" name="name" #name="ngModel" required>
+            <span class="text-danger" *ngIf="(name.touched || registerForm.submitted) && name.errors?.required">
+              Name is required
+            </span>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="text" class="form-control" [(ngModel)]="usersModal.email" name="email" #email="ngModel" required
+              email>
+            <span class="text-danger" *ngIf="(email.touched || registerForm.submitted) && email.errors?.required">
+              Email is required
+            </span>
+            <span class="text-danger" *ngIf="email.touched && email.errors?.email">
+              Enter a valid email address
+            </span>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" [(ngModel)]="usersModal.password" name="password"
+              #password="ngModel" appPasswordPattern required>
+            <span class="text-danger" *ngIf="(password.touched || registerForm.submitted) && password.errors?.required">
+              Password is required
+            </span>
+            <span class="text-danger" *ngIf="password.touched && password.errors?.invalidPassword">
+              Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase
+              letter and 1 number
+            </span>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" [(ngModel)]="usersModal.confirmPassword"
+            name="confirmPassword" #confirmPassword="ngModel" required>
+        <span class="text-danger"
+            *ngIf="(confirmPassword.touched || registerForm.submitted) && confirmPassword.errors?.required">
+            Confirm Password is required
+        </span>
+        <span class="text-danger"
+            *ngIf="confirmPassword.touched && confirmPassword.errors?.passwordMismatch">
+            Passwords doesnot match
+        </span>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card p-3 m-5">
+        <h2 class="text-center">Login here</h2>
+        <form #loginForm="ngForm" (ngSubmit)="loginForm.form.valid && login(loginForm)" novalidate>
+          <div class="mb-3">
+            <label for="lemail" class="form-label">Email address</label>
+            <input type="text" class="form-control" [(ngModel)]="logUserModel.email" name="lemail" #lemail="ngModel" required email>
+            <span class="text-danger" *ngIf="(lemail.touched || loginForm.submitted) && lemail.errors?.required">
+              Email is required
+            </span>
+            <span class="text-danger" *ngIf="lemail.touched && lemail.errors?.email">
+              Enter a valid email address
+            </span>
+          </div>
+          <div class="mb-3">
+            <label for="lpassword" class="form-label">Password</label>
+            <input type="password" class="form-control" [(ngModel)]="logUserModel.password" name="lpassword" #lpassword="ngModel"
+              appPasswordPattern required>
+            <span class="text-danger" *ngIf="(lpassword.touched || loginForm.submitted) && lpassword.errors?.required">
+              Password is required
+            </span>
+          </div>
+          <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

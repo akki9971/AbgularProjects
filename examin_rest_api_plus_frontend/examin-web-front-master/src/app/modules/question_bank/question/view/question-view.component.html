@@ -1,0 +1,99 @@
+<div class="content-wrapper" *ngIf="question">
+  <section id="question-view">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <h5><i class="icon-map"></i> Question</h5>
+          </div>
+          <div class="card-body">
+            <div class="card-block">
+              <div class="row">
+                <div class="col-12 col-md-4 col-lg-4">
+                  <ul class="no-list-style">
+                    <li class="mb-2">
+                      <span class="text-bold-500 primary"><i class="icon-home font-small-3"></i> Question L1</span>
+                      <span class="display-block overflow-hidden" [innerHTML]="question.questionL1"></span>
+                    </li>
+
+                    <li class="mb-2">
+                      <span class="text-bold-500 primary"><i class="icon-home font-small-3"></i> Question L2
+                      </span>
+                      <span class="display-block overflow-hidden" [innerHTML]="question.questionL2"></span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-12 col-md-4 col-lg-4">
+                  <ul class="no-list-style">
+                    <li class="mb-2">
+                      <span class="text-bold-500 primary">
+                        <i class="icon-home font-small-3"></i>
+                        AL1</span>
+                      <span class="display-block overflow-hidden" [innerHTML]="question.AL1"></span>
+                    </li>
+                    <li class="mb-2 ">
+                      <span class="text-bold-500 primary">
+                        <i class="icon-home font-small-3"></i> AL2
+                      </span>
+                      <span class="display-block overflow-hidden" [innerHTML]="question.AL2"></span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-12 col-md-4 col-lg-4">
+                  <ul class="no-list-style">
+                    <li class="mb-2">
+                      <span class="text-bold-500 primary"><i class="icon-home font-small-3"></i> BL1
+                      </span>
+                      <span class="display-block overflow-hidden" [innerHTML]="question.BL1"></span>
+                    </li>
+                    <li class="mb-2">
+                      <span class="text-bold-500 primary"><i class="icon-home font-small-3"></i> BL2
+                      </span>
+                      <span class="display-block overflow-hidden" [innerHTML]="question.BL2"></span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-12 col-md-4 col-lg-4">
+                  <ul class="no-list-style">
+                    <li class="mb-2">
+                      <span class="text-bold-500 primary"><i class="icon-home font-small-3"></i> CL1
+                      </span>
+                      <span class="display-block overflow-hidden" [innerHTML]="question.CL1"></span>
+                    </li>
+                    <li class="mb-2">
+                      <span class="text-bold-500 primary"><i class="icon-home font-small-3"></i> CL2
+                      </span>
+                      <span class="display-block overflow-hidden" [innerHTML]="question.CL2"></span>
+                    </li>
+                    <li class="mb-2">
+                      <span class="text-bold-500 primary"><i class="icon-home font-small-3"></i> Answer
+                      </span>
+                      <span class="display-block overflow-hidden">{{
+                        question.correctAnswer
+                        }}</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-12 col-md-4 col-lg-4">
+                  <ul class="no-list-style">
+                    <li class="mb-2">
+                      <span class="text-bold-500 primary"><i class="icon-home font-small-3"></i> DL1
+                      </span>
+                      <span class="display-block overflow-hidden" [innerHTML]="question.DL1"></span>
+                    </li>
+                    <li class="mb-2">
+                      <span class="text-bold-500 primary"><i class="icon-home font-small-3"></i> DL2
+                      </span>
+                      <span class="display-block overflow-hidden" [innerHTML]="question.DL2"></span>
+                    </li>
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

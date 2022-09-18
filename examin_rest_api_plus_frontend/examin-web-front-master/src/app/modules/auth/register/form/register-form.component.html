@@ -1,0 +1,104 @@
+<form [formGroup]="registerForm" (submit)="onSubmit()">
+    <div class="form-group">
+        <div class="col-md-12 txt-align">
+            <label for="fullName">Full Name:</label>
+            <input type="text" class="form-control" formControlName="fullName" placeholder="Full name" required />
+            <small class="form-text text-muted danger" *ngIf="
+            submitted &&
+            registerForm.get('fullName').errors?.required
+          ">Please enter your name</small>
+        </div>
+    </div>
+    <div class="form-group mb-0">
+        <div class="col-md-12 txt-align">
+            <label for="mobileNumber">Mobile Number:</label>
+            <input type="text" class="form-control" formControlName="mobile" placeholder="Mobile number" minlength="10" maxlength="10" required />
+            <small class="form-text text-muted" style="font-size: 9px;">You will get verification code on mobile number</small>
+            <small class="form-text text-muted danger" *ngIf="
+            submitted && registerForm.get('mobile').errors?.required
+          ">Please enter your mobile number</small>
+            <small class="form-text text-muted danger" *ngIf="
+            submitted && registerForm.get('mobile').errors?.pattern
+          ">Please enter valid mobile number</small>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12 txt-align">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" formControlName="email" placeholder="Email ID" required />
+            <small class="form-text text-muted danger" *ngIf="
+            submitted && registerForm.get('email').errors
+          ">Please enter valid email</small>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12 txt-align">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" formControlName="password" placeholder="Password" required />
+            <small class="form-text text-muted danger" *ngIf="
+            submitted &&
+            registerForm.get('password').errors?.required
+          ">Password is required</small>
+            <small class="form-text text-muted danger" *ngIf="
+            submitted &&
+            registerForm.get('password').errors?.minlength
+          ">Password should be atleast 6 characters long</small>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12 txt-align">
+            <!-- <label for="cPassword">Confirm Password:</label> -->
+            <input type="password" class="form-control" formControlName="confirmPassword" placeholder="Confirm password" required />
+            <small class="form-text text-muted danger" *ngIf="
+            submitted && registerForm.errors?.passwordMismatched
+          ">
+          Password and Confirm Password does not match!</small>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12 txt-align">
+            <label for="cPassword">Select Category:</label>
+            <select formControlName="categoryId" class="form-control">
+                   
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12 txt-align">
+            <label for="cPassword">Select Institute:</label>
+            <select formControlName="instituteId" class="form-control">
+                    <ng-container *ngFor="let institute of institutes" >
+                <option *ngIf="(institute.onboarding)" [value]="institute.instituteId">{{ institute.name }}</option>
+                        </ng-container>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" id="tandcAccept" name="tandcAccept" class="custom-control-input" [checked]="tandcAccepted" (change)="tandcAccepted = !tandcAccepted" />
+                    <label class="custom-control-label label-terms" for="tandcAccept">
+                        I accept the
+                        <a> terms & conditions.</a>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-warning btn-block btn-raised" [disabled]="inProgress">
+                Submit
+            </button>
+        </div>
+    </div>
+</form>
+<style>
+ .txt-align {
+     text-align: left;
+ }
+ form .form-group {
+     margin-bottom: 0.5rem;
+ }
+</style>

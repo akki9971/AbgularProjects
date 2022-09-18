@@ -1,0 +1,435 @@
+<section id="horizontal-form-layouts">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="px-3">
+          <form
+            #userEditForm
+            scrollToFirstInvalid
+            class="form form-horizontal"
+            [formGroup]="scholarshipForm"
+            (submit)="onSubmit()"
+          >
+            <div class="form-body">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="form-section">
+                    <i class="icon-home"></i> School Information
+                  </h4>
+  
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>School Name</label>
+                        <div class="position-relative has-icon-right">
+                          <input
+                            formControlName="schoolName"
+                            type="text"
+                            id="userinput2"
+                            class="form-control"
+                            placeholder="School Name"
+                          />
+                          <small
+                            class="form-text text-muted danger"
+                            *ngIf="
+                              submitted &&
+                              scholarshipForm.get('schoolName').errors?.required
+                            "
+                            >Please enter your school name</small
+                          >
+                          <small
+                            class="form-text text-muted danger"
+                            *ngIf="
+                              submitted &&
+                              (scholarshipForm.get('schoolName').errors?.minlength ||
+                                scholarshipForm.get('schoolName').errors?.maxlength)
+                            "
+                            >Max characters limit exceeded</small
+                          >
+                          <!-- <div class="form-control-position">
+                            <i class="icon-user"></i>
+                          </div> -->
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Class/Standard</label>
+                        <select
+                          id="userinput7"
+                          formControlName="schoolClass"
+                          class="form-control"
+                        >
+                          <option value="">Select</option>
+                          <option *ngFor="let i of [5,6,7,8,9,10,11,12]" [value]="i">
+                            {{i}}
+                            <!-- <ng-container *ngIf="i == 1">st </ng-container>
+                            <ng-container *ngIf="i == 2">nd </ng-container>
+                            <ng-container *ngIf="i == 3">rd </ng-container> -->
+                            <ng-container *ngIf="i > 3">th </ng-container>
+                            Std Class
+                          </option>
+                        </select>
+                        <small class="form-text text-muted primary">Junior Talent Hunt is for 5th to 8th Class</small>
+                        <small class="form-text text-muted primary">Senior Talent Hunt is for 9th to 12th Class</small>
+                        <small
+                          class="form-text text-muted danger"
+                          *ngIf="
+                            submitted &&
+                            scholarshipForm.get('schoolClass').errors?.required
+                          "
+                          >Please select your current class</small
+                        >
+                      </div>
+                    </div>
+  
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Exam Medium</label>
+                        <select
+                          id="userinput7"
+                          formControlName="examMedium"
+                          class="form-control"
+                          placeholder="Gender"
+                        >
+                          <option value="">Select</option>
+                          <option value="hindi">Hindi</option>
+                          <option value="english">English</option>
+                        </select>
+                        <small
+                          class="form-text text-muted danger"
+                          *ngIf="
+                            submitted &&
+                            scholarshipForm.get('examMedium').errors?.required
+                          "
+                          >Please select exam medium</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+              <!-- <div class="card">
+                <div class="card-body">
+                  <h4 class="form-section">
+                    <i class="icon-call-in"></i> Contact Details
+                  </h4>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <div class="position-relative has-icon-right">
+                          <input
+                            formControlName="mobile"
+                            type="number"
+                            id="userinput5"
+                            class="form-control"
+                            aria-label="Amount (to the nearest dollar)"
+                            [attr.disabled]="true"
+                            placeholder="Mobile Number"
+                          />
+                          <div class="form-control-position">
+                            <i class="icon-screen-smartphone"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <div class="position-relative has-icon-right">
+                          <input
+                            formControlName="email"
+                            class="form-control"
+                            type="email"
+                            id="userinput4"
+                            placeholder="E-mail"
+                          />
+                          <small
+                            class="form-text text-muted danger"
+                            *ngIf="
+                              submitted &&
+                              scholarshipForm.get('email').errors?.required
+                            "
+                            >Please enter your email id</small
+                          >
+                          <small
+                            class="form-text text-muted danger"
+                            *ngIf="
+                              submitted && scholarshipForm.get('email').errors?.email
+                            "
+                            >Please enter valid email id</small
+                          >
+                          <div class="form-control-position">
+                            <i class="icon-envelope"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+  
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="form-section"><i class="icon-map"></i> School Address</h4>
+                  <div class="row" formGroupName="address">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="userinput12">Address Line 1:</label>
+                        <div class="position-relative has-icon-right">
+                          <input
+                            type="text"
+                            id="userinput12"
+                            class="form-control"
+                            formControlName="addressLine1"
+                            placeholder="Address Line 1"
+                          />
+                          <small
+                            class="form-text text-muted danger"
+                            *ngIf="
+                              submitted &&
+                              scholarshipForm.get('address').get('addressLine1')
+                                .errors?.required
+                            "
+                            >Please enter your address</small
+                          >
+                          <small
+                            class="form-text text-muted danger"
+                            *ngIf="
+                              submitted &&
+                              (scholarshipForm.get('address').get('addressLine1')
+                                .errors?.minlength ||
+                                scholarshipForm.get('address').get('addressLine1')
+                                  .errors?.maxlength)
+                            "
+                            >Max characters limit exceeded</small
+                          >
+                          <div class="form-control-position">
+                            <i class="icon-home"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="userinput13">Address Line 2:</label>
+                        <div class="position-relative has-icon-right">
+                          <input
+                            type="text"
+                            id="userinput13"
+                            class="form-control"
+                            formControlName="addressLine2"
+                            placeholder="Address Line 2"
+                          />
+                          <small
+                            class="form-text text-muted danger"
+                            *ngIf="
+                              submitted &&
+                              scholarshipForm.get('address').get('addressLine2')
+                                .errors?.required
+                            "
+                            >Please enter your address</small
+                          >
+                          <small
+                            class="form-text text-muted danger"
+                            *ngIf="
+                              submitted &&
+                              (scholarshipForm.get('address').get('addressLine2')
+                                .errors?.minlength ||
+                                scholarshipForm.get('address').get('addressLine2')
+                                  .errors?.maxlength)
+                            "
+                            >Max characters limit exceeded</small
+                          >
+                          <div class="form-control-position">
+                            <i class="icon-home"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div> -->
+  
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="userinput14">City/Village/Town:</label>
+                        <div class="position-relative has-icon-right">
+                          <input
+                            type="text"
+                            id="userinput14"
+                            class="form-control"
+                            formControlName="cityVillageTown"
+                            placeholder="City/Village/Town"
+                          />
+                          <small
+                            class="form-text text-muted danger"
+                            *ngIf="
+                              submitted &&
+                              scholarshipForm.get('address').get('cityVillageTown')
+                                .errors?.required
+                            "
+                            >This field is mandatory
+                          </small>
+                          <small
+                            class="form-text text-muted danger"
+                            *ngIf="
+                              submitted &&
+                              (scholarshipForm.get('address').get('cityVillageTown')
+                                .errors?.minlength ||
+                                scholarshipForm.get('address').get('cityVillageTown')
+                                  .errors?.maxlength)
+                            "
+                            >Max characters limit exceeded</small
+                          >
+                          <div class="form-control-position">
+                            <i class="icon-home"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="userinput16">District</label>
+                        <div class="position-relative has-icon-right">
+                          <input
+                            type="text"
+                            id="userinput16"
+                            class="form-control"
+                            formControlName="district"
+                            placeholder="District"
+                          />
+                          <small
+                            class="form-text text-muted danger"
+                            *ngIf="
+                              submitted &&
+                              scholarshipForm.get('address').get('district').errors
+                                ?.required
+                            "
+                            >This field is mandatory</small
+                          >
+                          <small
+                            class="form-text text-muted danger"
+                            *ngIf="
+                              submitted &&
+                              (scholarshipForm.get('address').get('district').errors
+                                ?.minlength ||
+                                scholarshipForm.get('address').get('district').errors
+                                  ?.maxlength)
+                            "
+                            >Max characters limit exceeded</small
+                          >
+                          <div class="form-control-position">
+                            <i class="icon-home"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="userinput18">Pincode:</label>
+                        <div class="position-relative has-icon-right">
+                          <input
+                            type="text"
+                            id="userinput18"
+                            class="form-control"
+                            formControlName="pincode"
+                            placeholder="Pincode"
+                          />
+                          <small
+                            class="form-text text-muted danger"
+                            *ngIf="
+                              submitted &&
+                              scholarshipForm.get('address').get('pincode').errors
+                                ?.required
+                            "
+                            >This field is mandatory</small
+                          >
+                          <div class="form-control-position">
+                            <i class="icon-home"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="projectinput1">State</label>
+                        <div class="position-relative has-icon-right">
+                          <input
+                            type="text"
+                            id="userinput15"
+                            class="form-control"
+                            formControlName="state"
+                            placeholder="State"
+                          />
+                          <small
+                            class="form-text text-muted danger"
+                            *ngIf="
+                              submitted &&
+                              scholarshipForm.get('address').get('state').errors
+                                ?.required
+                            "
+                            >This field is mandatory</small
+                          >
+                          <small
+                            class="form-text text-muted danger"
+                            *ngIf="
+                              submitted &&
+                              (scholarshipForm.get('address').get('state').errors
+                                ?.minlength ||
+                                scholarshipForm.get('address').get('state').errors
+                                  ?.maxlength)
+                            "
+                            >This field should have minimum 4 characters and miximum 40 characters</small
+                          >
+                          <div class="form-control-position">
+                            <i class="icon-home"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="projectinput1">Country</label>
+                        <div class="position-relative has-icon-right">
+                          <input
+                            type="text"
+                            id="userinput19"
+                            class="form-control"
+                            formControlName="country"
+                            placeholder="Country"
+                            value="India"
+                            readonly
+                          />
+                          <div class="form-control-position">
+                            <i class="icon-map"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="form-actions text-center">
+              <!-- <button
+                type="button"
+                class="btn btn-raised btn-warning mr-1"
+                (click)="backClicked()"
+              >Cancel</button> -->
+              <button
+                type="submit"
+                class="btn btn-raised gradient-ibiza-sunset white"
+                [disabled]="inProcess"
+              >
+                <i class="fa fa-check-square-o"></i> Save All Details
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+</section>
+  

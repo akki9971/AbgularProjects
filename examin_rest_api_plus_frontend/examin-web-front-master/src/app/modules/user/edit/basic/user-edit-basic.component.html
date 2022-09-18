@@ -1,0 +1,616 @@
+<section id="horizontal-form-layouts">
+  <div class="row">
+    <div class="col-md-12">
+      <form #userEditForm scrollToFirstInvalid class="form form-horizontal" [formGroup]="profileForm"
+        (submit)="onSubmit()">
+        <div class="form-body">
+
+          <div class="card">
+            <div class="card-body">
+              <h4 class="form-section">
+                <i class="icon-users"></i> Personal Information
+              </h4>
+              <div class="row">
+
+                <div class="col-md-8">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="userinput6">Full Name</label>
+                        <div class="position-relative has-icon-right">
+                          <input formControlName="fullName" type="text" id="userinput2" class="form-control"
+                            placeholder="Full Name" />
+                          <small class="form-text text-muted danger" *ngIf="
+                                  submitted &&
+                                  profileForm.get('fullName').errors?.required
+                                ">Please enter your fullname</small>
+                          <small class="form-text text-muted danger" *ngIf="
+                                  submitted &&
+                                  (profileForm.get('fullName').errors?.minlength ||
+                                    profileForm.get('fullName').errors?.maxlength)
+                                ">Max characters limit exceeded</small>
+                          <div class="form-control-position">
+                            <i class="icon-user"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="userinput6">Date of Birth</label>
+                        <div class="position-relative has-icon-right">
+                          <input formControlName="dateOfBirth" type="date" id="userinput6" class="form-control"
+                            placeholder="Date of Birth" />
+                          <!-- <div class="input-group">
+                                <input
+                                  formControlName="dateOfBirth"
+                                  class="form-control"
+                                  placeholder="yyyy-mm-dd"
+                                  ngbDatepicker
+                                  [minDate]="minDate"
+                                  #datePicker="ngbDatepicker"> 
+                                <div class="input-group-append">
+                                  <div class="input-group-text" (click)="datePicker.toggle()">
+                                    <i class="fa fa-calendar" style="cursor: pointer;"></i>
+                                  </div>
+                                </div>
+                              </div> -->
+                          <small class="form-text text-primary">As per documents
+                          </small>
+                          <small class="form-text text-muted danger" *ngIf="
+                                  submitted &&
+                                  profileForm.get('dateOfBirth').errors?.required
+                                ">Please enter your date of birth</small>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="userinput3">Gender</label>
+                        <select id="userinput7" formControlName="gender" class="form-control" placeholder="Gender">
+                          <option value="">Select</option>
+                          <option value="male">Male</option>
+                          <option value="female">Female</option>
+                          <option value="others">Other</option>
+                        </select>
+                        <small class="form-text text-muted danger" *ngIf="
+                                submitted &&
+                                profileForm.get('gender').errors?.required
+                              ">Please select your gender</small>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="userinput3">Father's Name</label>
+                        <div class="position-relative has-icon-right">
+                          <input formControlName="fathersName" type="text" id="userinput3" class="form-control" />
+                          <small class="form-text text-muted danger" *ngIf="
+                                  submitted &&
+                                  profileForm.get('fathersName').errors?.required
+                                ">Please enter your father's name</small>
+                          <small class="form-text text-muted danger" *ngIf="
+                                  submitted &&
+                                  (profileForm.get('fathersName').errors?.minlength ||
+                                    profileForm.get('fathersName').errors?.maxlength)
+                                ">Max characters limit exceeded</small>
+                          <div class="form-control-position">
+                            <i class="icon-user-follow"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="projectinput2">Mother's Name</label>
+                        <div class="position-relative has-icon-right">
+                          <input formControlName="mothersName" type="text" class="form-control" />
+                          <small class="form-text text-muted danger" *ngIf="
+                                  submitted &&
+                                  profileForm.get('mothersName').errors?.required
+                                ">Please enter your mother's name</small>
+                          <small class="form-text text-muted danger" *ngIf="
+                                  submitted &&
+                                  (profileForm.get('mothersName').errors?.minlength ||
+                                    profileForm.get('mothersName').errors?.maxlength)
+                                ">Max characters limit exceeded</small>
+                          <div class="form-control-position">
+                            <i class="icon-user-female"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="userinput5">Category</label>
+                        <select formControlName="caste" class="form-control">
+                          <option value="">Select</option>
+                          <option value="General">General</option>
+                          <option value="BC-A">BC-A</option>
+                          <option value="BC-B">BC-B</option>
+                          <option value="SC">SC</option>
+                          <option value="ST">ST</option>
+                          <option value="EWS">EWS</option>
+                          <option value="PWD">PWD</option>
+                          <option value="Others">Others</option>
+                        </select>
+                        <small class="form-text text-muted danger" *ngIf="
+                                  submitted && (profileForm.get('caste').errors?.required || profileForm.get('caste').errors?.caste)
+                                ">Please select your category</small>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="userinput6">Religion</label>
+                        <select formControlName="religion" class="form-control">
+                          <option value="">Select</option>
+                          <option value="Hindu">Hindu</option>
+                          <option value="Buddhist">Buddhist</option>
+                          <option value="Christian">Christian</option>
+                          <option value="Islam">Muslim</option>
+                          <option value="Jain">Jain</option>
+                          <option value="Sikh">Sikh</option>
+                          <option value="Others">Others</option>
+                        </select>
+                        <small class="form-text text-muted danger" *ngIf="
+                                  submitted && (profileForm.get('religion').errors?.required || profileForm.get('religion').errors?.religion)
+                                ">Please select your religion</small>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="userinput6">Aadhaar Number</label>
+                        <input formControlName="aadhaarNumber" type="text" class="form-control"
+                          placeholder="****/**12/1234" maxlength="6" />
+                        <small class="text-primary">Please enter last 6 digits of your Aadhaar Number</small>
+                        <small class="form-text text-muted danger" *ngIf="
+                                  submitted && profileForm.get('aadhaarNumber').errors?.required">Please enter last 6
+                          digits of your Aadhaar Number</small>
+                        <small class="form-text text-muted danger" *ngIf="
+                                  submitted &&
+                                  (profileForm.get('aadhaarNumber').errors?.minlength ||
+                                    profileForm.get('aadhaarNumber').errors?.maxlength)
+                                ">Please enter last 6 digits of your Aadhaar Number</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-4">
+
+                  <div class="align-self-center halfway-fab text-center content">
+                    <a class="profile-image" (click)="addPicture()">
+                      <img *ngIf="!isBase64" [src]="imageBaseUrl + user?.profileImage"
+                        onError="this.src='assets/img/blankpic.png'"
+                        class="rounded-circle img-border gradient-summer width-200 content-image" alt="Card image"
+                        style="width: 120px" />
+                      <img *ngIf="isBase64" [src]="user?.profileImage" onError="this.src='assets/img/blankpic.png'"
+                        class="rounded-circle img-border gradient-summer width-200 content-image" alt="Card image"
+                        style="width: 120px" />
+                    </a>
+                  </div>
+                  <div class="text-center">
+                    <a (click)="addPicture()">Upload a photo of yourself</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <h4 class="form-section">
+                <i class="icon-call-in"></i> Contact Details
+              </h4>
+
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="userinput5">Mobile Number</label>
+                    <div class="position-relative has-icon-right">
+                      <input formControlName="mobile" type="number" id="userinput5" class="form-control"
+                        aria-label="Amount (to the nearest dollar)" [attr.disabled]="true"
+                        placeholder="Mobile Number" />
+                      <div class="form-control-position">
+                        <i class="icon-screen-smartphone"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="userinput20">Parent's Mobile Number</label>
+                    <div class="position-relative has-icon-right">
+                      <input formControlName="parentsNumber" type="number" id="userinput20" class="form-control"
+                        placeholder="10 digit mobile number" />
+                      <small class="form-text text-muted danger" *ngIf="
+                              submitted && profileForm.get('parentsNumber').errors?.pattern
+                            ">Please enter valid mobile number</small>
+                      <div class="form-control-position">
+                        <i class="icon-screen-smartphone"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="userinput4">E-mail</label>
+                    <div class="position-relative has-icon-right">
+                      <input formControlName="email" class="form-control" type="email" id="userinput4"
+                        placeholder="E-mail" />
+                      <small class="form-text text-muted danger" *ngIf="
+                              submitted &&
+                              profileForm.get('email').errors?.required
+                            ">Please enter your email id</small>
+                      <small class="form-text text-muted danger" *ngIf="
+                              submitted && profileForm.get('email').errors?.email
+                            ">Please enter valid email id</small>
+                      <div class="form-control-position">
+                        <i class="icon-envelope"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <h4 class="form-section"><i class="icon-map"></i> Permanent Address</h4>
+
+              <div class="row" formGroupName="address">
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="userinput18">Pin code</label>
+                    <div class="position-relative has-icon-right">
+                      <input type="number" id="userinput18" class="form-control" formControlName="pincode"
+                        placeholder="6 digit pin code" (change)="fetchAddressByPincode($event.target.value)" />
+                      <small class="form-text text-muted danger" *ngIf="
+                              submitted &&
+                              profileForm.get('address').get('pincode').errors
+                                ?.required
+                            ">This field is mandatory</small>
+                      <div class="form-control-position">
+                        <i class="icon-home"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="projectinput1">State / Province / Region</label>
+                    <div class="position-relative has-icon-right">
+                      <input type="text" id="userinput15" class="form-control" formControlName="state" />
+                      <small class="form-text text-muted danger" *ngIf="
+                              submitted &&
+                              profileForm.get('address').get('state').errors
+                                ?.required
+                            ">This field is mandatory</small>
+                      <small class="form-text text-muted danger" *ngIf="
+                              submitted &&
+                              (profileForm.get('address').get('state').errors
+                                ?.minlength ||
+                                profileForm.get('address').get('state').errors
+                                  ?.maxlength)
+                            ">Max characters limit exceeded</small>
+                      <div class="form-control-position">
+                        <i class="icon-home"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="userinput16">Town / City</label>
+                    <div class="position-relative has-icon-right">
+                      <input type="text" id="userinput16" class="form-control" formControlName="district" />
+                      <small class="form-text text-muted danger" *ngIf="
+                              submitted &&
+                              profileForm.get('address').get('district').errors
+                                ?.required
+                            ">This field is mandatory</small>
+                      <small class="form-text text-muted danger" *ngIf="
+                              submitted &&
+                              (profileForm.get('address').get('district').errors
+                                ?.minlength ||
+                                profileForm.get('address').get('district').errors
+                                  ?.maxlength)
+                            ">Max characters limit exceeded</small>
+                      <div class="form-control-position">
+                        <i class="icon-home"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <!-- <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="userinput13">Address Line 2:</label>
+                        <div class="position-relative has-icon-right">
+                          <input
+                            type="text"
+                            id="userinput13"
+                            class="form-control"
+                            formControlName="addressLine2"
+                            placeholder="Address Line 2"
+                          />
+                          <small
+                            class="form-text text-muted danger"
+                            *ngIf="
+                              submitted &&
+                              profileForm.get('address').get('addressLine2')
+                                .errors?.required
+                            "
+                            >Please enter your address</small
+                          >
+                          <small
+                            class="form-text text-muted danger"
+                            *ngIf="
+                              submitted &&
+                              (profileForm.get('address').get('addressLine2')
+                                .errors?.minlength ||
+                                profileForm.get('address').get('addressLine2')
+                                  .errors?.maxlength)
+                            "
+                            >Max characters limit exceeded</small
+                          >
+                          <div class="form-control-position">
+                            <i class="icon-home"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div> -->
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="userinput14">AREA, COLONY, STREET, SECTOR, VILLAGE</label>
+                    <div class="position-relative has-icon-right">
+                      <input type="text" id="userinput14" class="form-control" formControlName="cityVillageTown" />
+                      <small class="form-text text-muted danger" *ngIf="
+                              submitted &&
+                              profileForm.get('address').get('cityVillageTown')
+                                .errors?.required
+                            ">This field is mandatory
+                      </small>
+                      <small class="form-text text-muted danger" *ngIf="
+                              submitted &&
+                              (profileForm.get('address').get('cityVillageTown')
+                                .errors?.minlength ||
+                                profileForm.get('address').get('cityVillageTown')
+                                  .errors?.maxlength)
+                            ">Max characters limit exceeded</small>
+                      <div class="form-control-position">
+                        <i class="icon-home"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="userinput12">Flat, House no., Building</label>
+                    <div class="position-relative has-icon-right">
+                      <input type="text" id="userinput12" class="form-control" formControlName="addressLine1" />
+                      <small class="form-text text-muted danger" *ngIf="
+                              submitted &&
+                              profileForm.get('address').get('addressLine1')
+                                .errors?.required
+                            ">Please enter your address</small>
+                      <small class="form-text text-muted danger" *ngIf="
+                              submitted &&
+                              (profileForm.get('address').get('addressLine1')
+                                .errors?.minlength ||
+                                profileForm.get('address').get('addressLine1')
+                                  .errors?.maxlength)
+                            ">Max characters limit exceeded</small>
+                      <div class="form-control-position">
+                        <i class="icon-home"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="projectinput1">Country</label>
+                    <div class="position-relative has-icon-right">
+                      <input type="text" id="userinput19" class="form-control" formControlName="country"
+                        placeholder="Country" readonly />
+                      <div class="form-control-position">
+                        <i class="icon-map"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <h4 class="form-section"><i class="icon-map"></i>Correspondence Address</h4>
+              <div class="row" formGroupName="secondaryAddress">
+                <div class="col-md-12 checkbox">
+                  <div class="custom-control custom-checkbox m-0">
+                    <input type="checkbox" class="custom-control-input" id="sameAsPermanentAdd" (change)="copyaddress()"   />
+                    <label class="custom-control-label" for="sameAsPermanentAdd">Same as Permanent Address</label>
+                  </div>
+                </div>
+              </div>
+              <div class="row" formGroupName="secondaryAddress">
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="userinput18">Pin code</label>
+                    <div class="position-relative has-icon-right">
+                      <input type="number" id="userinput18" class="form-control" formControlName="pincode"
+                        placeholder="6 digit pin code" />
+                      <div class="form-control-position">
+                        <i class="icon-home"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="projectinput1">State / Province / Region</label>
+                    <div class="position-relative has-icon-right">
+                      <input type="text" id="userinput15" class="form-control" formControlName="state" />
+                      <small class="form-text text-muted danger" *ngIf="
+                                submitted &&
+                                (profileForm.get('secondaryAddress').get('state').errors
+                                  ?.minlength ||
+                                  profileForm.get('secondaryAddress').get('state').errors
+                                    ?.maxlength)
+                              ">Max characters limit exceeded</small>
+                      <div class="form-control-position">
+                        <i class="icon-home"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="userinput16">Town / City</label>
+                    <div class="position-relative has-icon-right">
+                      <input type="text" id="userinput16" class="form-control" formControlName="district" />
+                      <small class="form-text text-muted danger" *ngIf="
+                                submitted &&
+                                (profileForm.get('secondaryAddress').get('district').errors
+                                  ?.minlength ||
+                                  profileForm.get('secondaryAddress').get('district').errors
+                                    ?.maxlength)
+                              ">Max characters limit exceeded</small>
+                      <div class="form-control-position">
+                        <i class="icon-home"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <!-- <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="userinput13">Address Line 2:</label>
+                          <div class="position-relative has-icon-right">
+                            <input
+                              type="text"
+                              id="userinput13"
+                              class="form-control"
+                              formControlName="addressLine2"
+                              placeholder="Address Line 2"
+                            />
+                            <small
+                              class="form-text text-muted danger"
+                              *ngIf="
+                                submitted &&
+                                (profileForm.get('secondaryAddress').get('addressLine2')
+                                  .errors?.minlength ||
+                                  profileForm.get('secondaryAddress').get('addressLine2')
+                                    .errors?.maxlength)
+                              "
+                              >Max characters limit exceeded</small
+                            >
+                            <div class="form-control-position">
+                              <i class="icon-home"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div> -->
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="userinput14"> AREA, COLONY, STREET, SECTOR, VILLAGE </label>
+                    <div class="position-relative has-icon-right">
+                      <input type="text" id="userinput14" class="form-control" formControlName="cityVillageTown" />
+                      <small class="form-text text-muted danger" *ngIf="
+                                submitted &&
+                                (profileForm.get('secondaryAddress').get('cityVillageTown')
+                                  .errors?.minlength ||
+                                  profileForm.get('secondaryAddress').get('cityVillageTown')
+                                    .errors?.maxlength)
+                              ">Max characters limit exceeded</small>
+                      <div class="form-control-position">
+                        <i class="icon-home"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="userinput12">Flat, House no., Building</label>
+                    <div class="position-relative has-icon-right">
+                      <input type="text" id="userinput12" class="form-control" formControlName="addressLine1" />
+                      <small class="form-text text-muted danger" *ngIf="
+                                submitted &&
+                                (profileForm.get('secondaryAddress').get('addressLine1')
+                                  .errors?.minlength ||
+                                  profileForm.get('secondaryAddress').get('addressLine1')
+                                    .errors?.maxlength)
+                              ">Max characters limit exceeded</small>
+                      <div class="form-control-position">
+                        <i class="icon-home"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="projectinput1">Country</label>
+                    <div class="position-relative has-icon-right">
+                      <input type="text" id="userinput19" class="form-control" formControlName="country"
+                        placeholder="Country" readonly />
+                      <div class="form-control-position">
+                        <i class="icon-map"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-actions text-center">
+          <!-- <button
+                type="button"
+                class="btn btn-raised btn-warning mr-1"
+                (click)="backClicked()"
+              >Cancel</button> -->
+          <button type="submit" class="btn btn-raised gradient-ibiza-sunset white" [disabled]="inProcess">
+            <i class="fa fa-check-square-o"></i> Save All Details
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<ng-template #modalContent>
+  <div class="modal-header">
+    <h5 class="modal-title">Upload a photo of yourself</h5>
+    <button type="button" class="close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="v-card__text">
+      <app-image-cropper [buttonLabel]="'Save'" (submitImage)="uploadImage($event)"></app-image-cropper>
+    </div>
+    <p class="text-center text-danger">Upload a photo that clearly shows your face.</p>
+  </div>
+  <!-- <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="close()">OK</button>
+  </div> -->
+</ng-template>

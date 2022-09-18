@@ -1,0 +1,13 @@
+<div *ngIf="institutes">
+    <fieldset class="form-group">
+        <!-- <legend>Institute:</legend> -->
+        <select class="form-control" (change)="onChange($event.target.value)">
+            <option value="">Select Institute</option>
+            <option
+                *ngFor="let institute of institutes"
+                [value]="institute.instituteId"
+                [selected]="institute?.instituteId == usersInstitute?.instituteId"
+            >{{ institute.name }}</option>
+        </select>
+    </fieldset>
+</div>

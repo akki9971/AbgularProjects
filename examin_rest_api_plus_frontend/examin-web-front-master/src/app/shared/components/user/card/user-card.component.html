@@ -1,0 +1,30 @@
+<div *ngIf="user" class="card border">
+  <div class="card-header text-center">
+    <!-- <img src="../app-assets/img/portrait/small/avatar-s-6.png" alt="Maitri" width="150" class="rounded-circle gradient-red-pink"> -->
+    <img
+      [src]=" imageBaseUrl + user?.profileImage " onError="this.src='assets/img/blankpic.png'"
+      class="rounded-circle img-border gradient-summer width-200 content-image"
+      alt="Card image"
+      style="width: 120px"
+    />
+  </div>
+  <div class="card-body">
+    <div class="card-block text-center">
+      <h4 class="card-title font-weight-bold">{{ user?.fullName }}</h4>
+      <!-- <p *ngIf="user?.mobile" class="category text-gray font-small-4">
+        +91-{{ user?.mobile }}
+      </p>
+      <p *ngIf="user?.email" class="category text-gray font-small-4">
+        {{ user?.email }}
+      </p> -->
+      <p *ngIf="user?.dateOfBirth" class="category text-gray font-small-4">
+        Date of Birth: {{ user?.dateOfBirth }}
+      </p>
+      <!-- <a
+        [routerLink]="['/user', user?.userId , 'edit']"
+        class="btn"
+        >Update Profile</a
+      > -->
+    </div>
+  </div>
+</div>

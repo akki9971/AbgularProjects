@@ -1,0 +1,110 @@
+<!-- <ng-template #noUsers>
+  <p>No records found!</p>
+</ng-template> -->
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Registered Users</h4>
+      </div>
+
+      <div>
+        <div class="col-md-12 mt3">
+          <section id="simple-table">
+            <div class="row">
+              <div class="col-sm-12 mt-3">
+                <div class="row">
+                  <div class="col-md-12">
+                    <p>Filter by:</p>
+                  </div>
+                  <app-institute-selector class="col-xl-4 col-lg-6 col-md-12"
+                    (onSelection)="setInstituteParams('instituteId', $event)"></app-institute-selector>
+
+                  <fieldset class="form-group  col-xl-4 col-lg-6 col-md-12">
+                    <!-- <legend>Institute:</legend> -->
+                    <select class="form-control" (change)="setParams('examId',$event.target.value)">
+                      <option value="">Select Exam</option>
+                      <option *ngFor="let exam of exams" [value]="exam.examId">{{ exam.title }}</option>
+                    </select>
+                  </fieldset>
+                  <fieldset class="form-group  col-xl-4 col-lg-6 col-md-12">
+                    <!-- <legend>Institute:</legend> -->
+                    <select *ngIf="noExamId" class="form-control" (change)="setParams('payment_status',$event.target.value)">
+                      <option value="">Payment Status</option>
+                      <option value="paid">Paid</option>
+                      <option value="unpaid">UnPaid</option>
+                    </select>
+                  </fieldset>
+                  <fieldset class="form-group  col-xl-4 col-lg-6 col-md-12">
+                    <div class="controls">
+                      <label>Registerd From</label>
+                      <input type="date" class="form-control" placeholder="MM/DD/YYYY"
+                        (change)="setParams('registerd_from',$event.target.value)" />
+                    </div>
+                  </fieldset>
+                  <fieldset class="form-group  col-xl-4 col-lg-6 col-md-12">
+                    <div class="controls">
+                      <label>Registerd To</label>
+                      <input type="date" class="form-control" placeholder="MM/DD/YYYY"
+                        (change)="setParams('registerd_to',$event.target.value)" />
+                    </div>
+                  </fieldset>
+                  <!-- <div class="col-xl-4 col-lg-6 col-md-12">
+										<fieldset class="form-group">
+											<select class="form-control">
+												<option>All</option>
+												<option>Paid</option>
+												<option>Due</option>
+											</select>
+										</fieldset>
+                  </div> -->
+                  <!-- <div class="col-xl-4 col-lg-6 col-md-12 text-center">
+                    <h3 class="mb-1 danger">Total - 1234</h3>
+                  </div> -->
+                </div>
+                <!-- <div class="row">
+                  <div class="col-md-12 mt-1">
+                  <p>Search by:</p>
+                  </div>
+                  <div class="col-md-4">
+                    <fieldset class="form-group">
+                      <input type="text" class="form-control" placeholder="User ID">
+                    </fieldset>
+                  </div>
+                  <div class="col-md-4">
+                    <fieldset class="form-group">
+                      <input type="text" class="form-control" placeholder="Name">
+                    </fieldset>
+                  </div>
+                  <div class="col-md-4">
+                    <fieldset class="form-group">
+                      <input type="text" class="form-control" placeholder="Phone">
+                    </fieldset>
+                  </div>
+                </div> -->
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <div class="card-block">
+          <button *ngIf="rowData.length > 0" class="btn btn-default" (click)="onBtnExport()">
+            <i class="ft-download font-small-4"></i> Export
+          </button>
+
+
+          <input type="text" id="filter-text-box" style="padding:2px;margin-top: -33px;float:right;"
+            placeholder="Filter..." (keyup)="onFilterTextBoxChanged($event.target.value)" />
+          <ag-grid-angular style="width: 100%;" class="ag-theme-material" [rowData]="rowData" [columnDefs]="columnDefs"
+            [enableSorting]="true" [pagination]="true" [enableFilter]="true" [showToolPanel]="showToolPanel"
+            [gridOptions]="gridOptions" [domLayout]="autoHeight" (gridReady)="onGridReady($event)">
+          </ag-grid-angular>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

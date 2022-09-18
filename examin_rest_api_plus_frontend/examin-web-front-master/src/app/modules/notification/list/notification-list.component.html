@@ -1,0 +1,26 @@
+<div *ngIf="isLoading; else loaded">
+  Loading...
+</div>
+
+<ng-template #loaded>
+
+  <div *ngIf="notifications.length > 0; else noRecordsFound" class="content-wrapper">
+    <section>
+      <div class="row">
+        <div class="col-12">
+          <div class="noti-list">
+            <app-notification-card
+              *ngFor="let notification of notifications"
+              [notification]="notification"
+            ></app-notification-card>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <ng-template #noRecordsFound>
+    No records found!
+  </ng-template>
+
+</ng-template>

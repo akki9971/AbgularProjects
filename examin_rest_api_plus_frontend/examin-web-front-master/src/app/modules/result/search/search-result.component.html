@@ -1,0 +1,92 @@
+<section>
+    <div class="row">        
+   
+        <div class="col-md-12 mt3">
+            <section id="simple-table">
+              <div class="row">
+                <div class="col-sm-12 mt-3">
+                  <div class="row">
+                    <div class="col-md-12">
+                    <p>Filter by:</p>
+                    </div>
+                    <app-institute-selector
+                      class="col-xl-4 col-lg-6 col-md-12"
+                      (onSelection)="setInstituteParams('instituteId', $event)"
+                    ></app-institute-selector>
+
+                    <fieldset class="form-group  col-xl-4 col-lg-6 col-md-12">
+                        <!-- <legend>Institute:</legend> -->
+                        <select class="form-control" (change)="setParams('examId',$event.target.value)">
+                            <option value="">Select Exam</option>
+                            <option *ngFor="let exam of exams" [value]="exam.examId">{{ exam.title }}</option>
+                        </select>
+                    </fieldset>
+                   
+                  </div>
+                 
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      
+ 
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Students Result</h4>
+        </div>
+        <div class="card-body">
+          <div class="card-block">
+              <div style="margin: 10px 0;">
+                   
+                  <button *ngIf="rowData.length > 0" class="btn btn-default" (click)="onBtnExport()">
+                      <i class="ft-download font-small-4"></i> Export
+                  </button>
+                </div>
+
+                <input type="text" id="filter-text-box" style="padding:2px;margin-top: -33px;float:right;" placeholder="Filter..." (keyup)="onFilterTextBoxChanged($event.target.value)"/>
+              <ag-grid-angular 
+              style="width: 100%;"
+            class="ag-theme-material"
+            [rowData]="rowData" 
+            [columnDefs]="columnDefs"
+            [enableSorting]="true"
+            [pagination]="true"
+            [enableFilter]="true"
+            [showToolPanel]="showToolPanel"
+            [gridOptions]="gridOptions"
+            [domLayout] = "autoHeight"
+            (gridReady)="onGridReady($event)">
+          </ag-grid-angular>
+              
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+ 
+
+<!-- The Modal -->
+<ng-template #screenshotDialog let-modal>
+  
+    <div class="modal-header">
+      <h3 class="modal-title text-primary text-bold">Screenshots Captured</h3>       
+    </div>
+    <div class="modal-body">
+        <div class="row" *ngIf="selectedUser && selectedExam">
+            <div class="col-md-12 mt3">
+            <app-webcam-selector [userId]='selectedUser' [examId]='selectedExam'></app-webcam-selector>
+              </div>
+          </div>       
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+  </ng-template>
+
+</section>

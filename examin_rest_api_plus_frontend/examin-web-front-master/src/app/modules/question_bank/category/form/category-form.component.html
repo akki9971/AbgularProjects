@@ -1,0 +1,47 @@
+<section id="horizontal-form-layouts">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="px-3">
+            <form scrollToFirstInvalid class="form form-horizontal" [formGroup]="categoryForm" (submit)="onSubmit()">
+              <div class="form-body">
+                <h4 class="form-section">
+                  {{ label }} Category
+                </h4>
+                <div class="form-group row">
+                  <label class="col-md-3 label-control">Name: </label>
+                  <div class="col-md-9">
+                    <input formControlName="name" type="text" class="form-control border-primary" />
+                    <small class="form-text text-muted danger"
+                      *ngIf="submitted && categoryForm.get('name').errors?.required">
+                      Please enter name</small>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-actions pull-right">
+                <button type="button" class="btn btn-raised btn-warning mr-1" (click)="backClicked()">
+                  Cancel
+                </button>
+                <button type="submit" class="btn btn-raised btn-primary" [disabled]="inProcess">
+                  {{ label }}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .dib {
+    display: inline-block;
+  }
+
+  .ngb-tp-input-container .btn[class*="btn-"] {
+    margin-bottom: 0 !important;
+  }
+</style>

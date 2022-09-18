@@ -1,0 +1,34 @@
+{
+  "user": [
+    {
+      "name": "zeenat aman",
+      "email": "amanzeenat207@gmail.com",
+      "password": "12345674",
+      "id": 1
+    },
+    {
+      "name": "a",
+      "email": "a.com",
+      "password": "a",
+      "id": 3
+    },
+    {
+      "name": "aaa",
+      "email": "aaa.coma",
+      "password": "a",
+      "id": 4
+    },
+    {
+      "name": "aaaaa",
+      "email": "aaa",
+      "password": "aaaa",
+      "id": 5
+    },
+    {
+      "name": "aaquiib",
+      "email": "aaquib@gmail.com",
+      "password": "Aaquib@1",
+      "id": 6
+    }
+  ]
+}

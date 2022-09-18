@@ -1,0 +1,23 @@
+<div class="card shadow-sm">
+  <div class="row justify-align-canter p-3">
+    <img src={{Item.image}} alt="" width="40%" height="250">
+  </div>
+
+  <div class="card-body">
+    <p class="card-text">
+      <strong><small>{{Item.price |currency:'INR'}}</small></strong>
+    </p>
+
+    <p class="card-text text-justify"><b>Description: </b>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="btn-group">
+        <button type="button" *ngIf="showMe===true" class="btn btn-sm btn-outline-secondary"
+          (click)="addtocart(Item)">Add To Cart</button>
+        <button type="button" *ngIf="showMe===false" class="btn btn-sm btn-outline-secondary"
+          routerLink="/cartcomponent">Go To Cart</button>
+        <button type="button" class="btn btn-sm btn-outline-secondary">View Detail</button>
+      </div>
+
+    </div>
+  </div>
+</div>

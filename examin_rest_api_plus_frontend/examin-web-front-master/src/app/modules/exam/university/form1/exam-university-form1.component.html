@@ -1,0 +1,201 @@
+<section id="horizontal-form-layouts">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    डिप्लोमा / Diploma
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <form scrollToFirstInvalid class="form form-horizontal" [formGroup]="examUniversityForm1"
+                (submit)="onSubmit()">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="px-3">
+                            <div class="form-body">
+                                <!-- <h4 class="form-section">
+                                    Diploma
+                                </h4> -->
+                                <div class="form-group row">
+                                    <label class="col-md-3 label-control">Courses:</label>
+                                    <div class="col-md-6">
+                                        <select formControlName="course" class="form-control">
+                                            <option value="">Select</option>
+                                            <option value="संस्कृत-पत्रकारिता">संस्कृत-पत्रकारिता</option>
+                                            <option value="ज्योतिषम्">ज्योतिषम्</option>
+                                            <option value="वेदः">वेदः</option>
+                                            <option value="पौरोहित्यम्">पौरोहित्यम्</option>
+                                            <option value=" कर्मकाण्डः">कर्मकाण्डः</option>
+                                            <option value="संगणकम्">संगणकम्</option>
+                                            <option value="योगः">योगः</option>
+                                            <option value="आयुर्वेदः">आयुर्वेदः</option>
+                                            <option value="वैदिकगणित">वैदिकगणित</option>
+                                            <option value="लिपि-शिक्षणम्">लिपि-शिक्षणम्</option>
+                                            <option value="भाषाशिक्षणम्">भाषाशिक्षणम्</option>
+                                            <option value="पर्यावरणम्">पर्यावरणम्</option>
+                                            <option value="वास्तुशास्त्रम्">वास्तुशास्त्रम्</option>
+                                            <option value="जीवनप्रबन्धनम् (गीता)">जीवनप्रबन्धनम् (गीता)</option>
+                                            <option value="संस्कृतक्षेत्रस्य कृते वेबडिजाईनिंग">संस्कृतक्षेत्रस्य कृतेवेबडिजाईनिंग</option>
+                                        </select>
+                                        <small class="form-text text-muted danger"
+                                        *ngIf="submitted && examUniversityForm1.get('course').errors?.required">
+                                        Please select course</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="form-section">
+                            10th class Details
+                        </h4>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>10th Class Passing year</label>
+                                    <input formControlName="sscPassingYear" type="text" class="form-control"
+                                        placeholder="Passing Year" />
+                                    <small class="form-text text-muted danger"
+                                        *ngIf="submitted && examUniversityForm1.get('sscPassingYear').errors?.required">
+                                        Please enter passing year</small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Board Name</label>
+                                    <input formControlName="sscBoardName" type="text" class="form-control"
+                                        placeholder="Board Name" />
+                                    <small class="form-text text-muted danger"
+                                        *ngIf="submitted && examUniversityForm1.get('sscBoardName').errors?.required">
+                                        Please enter board name</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Certificate Number</label>
+                                    <input formControlName="sscCertificateNumber" type="text" class="form-control"
+                                        placeholder="Certificate Number" />
+                                    <small class="form-text text-muted danger"
+                                        *ngIf="submitted && examUniversityForm1.get('sscCertificateNumber').errors?.required">
+                                        Please enter certificate number</small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Marks Percentage</label>
+                                    <input formControlName="sscPercentage" type="text" class="form-control"
+                                        placeholder="Percentage" />
+                                    <small class="form-text text-muted danger"
+                                        *ngIf="submitted && examUniversityForm1.get('sscPercentage').errors?.required">
+                                        Please enter percentage</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="form-section">
+                            12th class Details
+                        </h4>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>12th Class Passing year</label>
+                                    <input formControlName="hscPassingYear" type="text" class="form-control"
+                                        placeholder="Passing Year" />
+                                    <small class="form-text text-muted danger"
+                                        *ngIf="submitted && examUniversityForm1.get('hscPassingYear').errors?.required">
+                                        Please enter passing year</small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Board Name</label>
+                                    <input formControlName="hscBoardName" type="text" class="form-control"
+                                        placeholder="Board Name" />
+                                    <small class="form-text text-muted danger"
+                                        *ngIf="submitted && examUniversityForm1.get('hscBoardName').errors?.required">
+                                        Please enter board name</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Certificate Number</label>
+                                    <input formControlName="hscCertificateNumber" type="text" class="form-control"
+                                        placeholder="Certificate Number" />
+                                    <small class="form-text text-muted danger"
+                                        *ngIf="submitted && examUniversityForm1.get('hscCertificateNumber').errors?.required">
+                                        Please enter certificate number</small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Marks Percentage</label>
+                                    <input formControlName="hscPercentage" type="text" class="form-control"
+                                        placeholder="Percentage" />
+                                    <small class="form-text text-muted danger"
+                                        *ngIf="submitted && examUniversityForm1.get('hscPercentage').errors?.required">
+                                        Please enter percentage</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="form-section">
+                            Graduation Details
+                        </h4>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Graduation Passing year</label>
+                                    <input formControlName="graduationPassingYear" type="text" class="form-control"
+                                        placeholder="Passing Year" />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Board Name</label>
+                                    <input formControlName="graduationBoardName" type="text" class="form-control"
+                                        placeholder="Board Name" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Certificate Number</label>
+                                    <input formControlName="graduationCertificateNumber" type="text"
+                                        class="form-control" placeholder="Certificate Number" />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Marks Percentage</label>
+                                    <input formControlName="graduationPercentage" type="text" class="form-control"
+                                        placeholder="Percentage" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions pull-right">
+                    <button type="button" class="btn btn-raised btn-warning mr-1"
+                        (click)="backClicked()">Cancel</button>
+                    <button type="submit" class="btn btn-raised btn-primary" [disabled]="inProcess">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

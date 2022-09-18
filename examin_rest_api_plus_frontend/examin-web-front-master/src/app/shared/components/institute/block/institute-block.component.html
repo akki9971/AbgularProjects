@@ -1,0 +1,22 @@
+<section>
+    <div *ngIf="institute" class="row">
+      <div class="col-12">
+        <div class="content-header">{{ institute?.title }} by {{ institute?.name }}</div>
+        <!-- <p class="content-sub-header"></p> -->
+        <p class="danger note mt-2" style="font-weight: 500;" *ngIf="institute?.uniqueName === 'scholarship'">Junior Talent Hunt is for 5th to 8th Class ||
+          Senior Talent Hunt is for 9th to 12th Class
+        </p>
+        <p class="danger note mt-2" *ngIf="institute?.uniqueName === 'mvsu'">नोट: जिन बच्चो का २०१९-२०२० सत्र का रिजल्ट नहीं आया है वो भी फॉर्म को भर सकते हैं |</p>
+      </div>
+    </div>
+    <div *ngIf="exams && exams.length > 0; else noExams" class="row" matchHeight="card">
+      <app-exam-card
+        *ngFor="let exam of exams"
+        [isAdmin]="false"
+        [exam]="exam"
+      ></app-exam-card>
+    </div>
+    <ng-template #noExams>
+      <h3>Coming soon...!</h3>
+    </ng-template>
+</section>

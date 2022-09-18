@@ -1,0 +1,56 @@
+<div *ngIf="isLoading; else loaded">
+  Loading...
+</div>
+
+<ng-template #loaded>
+
+  <div *ngIf="results.length > 0; else noRecordsFound" class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Results</h4>
+        </div>
+        <div class="card-body">
+          <div class="card-block">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>Exam Id</th>
+                  <th>Exam Title</th>
+                  <!-- <th>Institute</th> -->
+                  <th>Correct Answers</th>
+                  <th>Wrong Answers</th>
+                  <th>Score</th>
+                  <th>Marks</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let result of results; let i = index">
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ result.examId }}</td>
+                  <td>{{ result.examTitle }}</td>
+                  <!-- <td>{{ result.institute }}</td> -->
+                  <td>{{ result.correctAnswers }}</td>
+                  <td>{{ result.wrongAnswers }}</td>
+                  <td>{{ result.score }}</td>
+                  <td>{{ result.marks }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <ng-template #noResult>
+            <div class="card-block">
+              <p>No result found</p>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noRecordsFound>
+    No records found!
+  </ng-template>
+
+</ng-template>

@@ -1,0 +1,39 @@
+<section id="horizontal-form-layouts">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-body">
+            <div class="px-3">
+              <form scrollToFirstInvalid class="form form-horizontal" [formGroup]="instituteForm" (submit)="onSubmit()">
+                <div class="form-body">
+                  <h4 class="form-section">
+                    Select Institute
+                  </h4>
+                  <div class="form-group row">
+                    <label class="col-md-3 label-control">Institute name:
+                    </label>
+                    <div class="col-md-9">
+                        <div class="row">
+                          <app-institute-selector
+                            class="col-xl-12 col-lg-12 col-md-12"
+                            (onSelection)="setInstitute('instituteId', $event)"
+                          ></app-institute-selector>
+                        </div>
+                      <input formControlName="instituteId" type="hidden" class="form-control border-primary" />
+                      <small class="form-text text-muted danger" 
+                      *ngIf="submitted && instituteForm.get('instituteId').errors?.required">This field is required</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-actions pull-right">
+                  <button type="button" class="btn btn-raised btn-warning mr-1" (click)="backClicked()">Cancel</button>
+                  <button type="submit" class="btn btn-raised btn-primary" [disabled]="inProcess">Update</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>

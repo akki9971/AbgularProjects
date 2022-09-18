@@ -1,0 +1,50 @@
+#otp-verify {
+  background-color: #f5f7fa;
+
+  .fg-image {
+    padding: 0;
+    background: #f0f0f0;
+  }
+
+  .login-btn {
+    .btn.btn-outline-primary {
+      &:hover {
+        a {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .recover-pass {
+    button.btn.btn-primary {
+      color: #fff !important;
+    }
+  }
+}
+
+.dif {
+  display: inline-flex;
+}
+
+.login-bg {
+  background-image: url("https://images.unsplash.com/photo-1475669698648-2f144fcaaeb1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.examin-boxshadow {
+  -webkit-box-shadow: 0 6px 0px 0 rgba(0, 0, 0, 0.01), 0 15px 32px 0 rgba(0, 0, 0, 0.06);
+  -moz-box-shadow: 0 6px 0px 0 rgba(0, 0, 0, 0.01), 0 15px 32px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: 0 6px 0px 0 rgba(0, 0, 0, 0.01), 0 15px 32px 0 rgba(0, 0, 0, 0.06);
+}
+
+@media screen and (max-width: 992px) {
+}
+@media screen and (max-width: 600px) {
+  .mobile-hide {
+    display: none;
+  }
+}

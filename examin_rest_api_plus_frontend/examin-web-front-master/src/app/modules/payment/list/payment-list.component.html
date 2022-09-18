@@ -1,0 +1,75 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">User Payments</h4>
+      </div>
+
+      <div>
+        <div class="col-md-12 mt3">
+          <section id="simple-table">
+            <div class="row">
+              <div class="col-sm-12 mt-3">
+                <div class="row">
+                  <div class="col-md-12">
+                  <p>Filter by:</p>
+                  </div>
+                  <app-institute-selector
+                    class="col-xl-4 col-lg-6 col-md-12"
+                    (onSelection)="setParams('instituteId', $event)"
+                  ></app-institute-selector>
+                  <!-- <div class="col-xl-4 col-lg-6 col-md-12">
+										<fieldset class="form-group">
+											<select class="form-control">
+												<option>All</option>
+												<option>Paid</option>
+												<option>Due</option>
+											</select>
+										</fieldset>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <div class="card-block">
+          <table class="table table-responsive-md-md">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>User ID</th>
+                <th>Exam ID</th>
+                <th>Order ID</th>
+                <th>Users Name</th>
+                <th>Payment Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let payment of payments; let i = index;">
+                <td>{{ i + 1 }}</td>
+                <td>{{ payment?.userId }}</td>
+                <td>{{ payment?.examId }}</td>
+                <td>{{ payment?.requestId }}</td>
+                <td>
+                  <a [routerLink]="['/user', payment?.userId]">
+                    {{ payment?.fullName }}
+                  </a>
+                </td>
+                <td>{{ payment?.status }}</td>
+                <td>
+                  <a [routerLink]="['/payment', payment.paymentId]" class="success p-0" data-original-title="" title="">
+                    <i class="ft-eye font-medium-3 mr-2"></i>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

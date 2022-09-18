@@ -1,0 +1,134 @@
+
+<p *ngIf="inProcess; else loaded">
+  Processing...!
+</p>
+
+<ng-template #loaded>
+  <div *ngIf="questionsLoaded && ((cameraAllowed && exam?.webcamCapture === true) || exam?.webcamCapture === false); else noData" class="row border"  (showDialog)="showDialog()" appDisableClick>
+      <div class="col-xl-12 col-lg-12">
+          <div class="card">
+              <div class="card-body">
+                  <h4 class="card-title mb-0">
+                      {{ exam?.title }}
+                      <ng-container  [counter]="timerCounter" [interval]="timerInterval" (value)="timerUpdate($event)">
+                          <span class="pull-right mb-0">
+                              Time Left - <span class="text-danger">{{ timerLeft | minuteSeconds: 'true' }}</span>
+                          </span>
+                      </ng-container>
+                  </h4>
+              </div>
+          </div>
+      </div>
+      <div class="col-xl-8 col-lg-12">
+          <app-exam-quiz [exam]="exam"></app-exam-quiz>
+      </div>
+      <div class="col-xl-4 col-lg-12 pl-0">
+          <app-exam-progress></app-exam-progress>
+          <div [draggable]="true" *ngIf="firstImage">
+            <webcam class="custom-styles"
+              *ngIf="showWebcam"
+              [height]="160"
+              [width]="180"
+              [trigger]="triggerObservable"
+              (imageCapture)="handleImage($event)"
+              [videoOptions]="videoOptions"
+              [imageQuality]="1"
+              (initError)="handleInitError($event)"
+            ></webcam>
+          </div>
+      </div>
+  </div>
+  
+  <ng-template #noData>
+    <div class="alert alert-warning alert-dismissible mb-2" role="alert">       
+        <h4 class="alert-heading mb-2">Please allow your webcam!</h4>
+        <p>In order to start the exam please start your webcam</p>
+    </div>
+  </ng-template>
+
+</ng-template>
+
+ 
+<!-- The Modal -->
+<ng-template #contentDialog let-modal>
+  
+        <div class="modal-header">
+          <h3 class="modal-title text-primary text-bold">Upload Identification</h3>       
+        </div>
+        <div class="modal-body">
+    
+            <div class="row">
+                <div class="col-sm-5 border-right">
+                  
+              <ul class="point-notes">
+                  <li>Please make sure complete face is captured by camera.</li>
+                  <li>Please click on Take A Snapshot button to take photo.</li>
+                  <li>If any issue with captured image click on Take It Again button.</li>
+                  <li>Submit the image by clicking Update Image button.</li>            
+                </ul>            
+                <br>
+                <div class="snapshot text-center" *ngIf="webcamFirstImage">
+                    <h6>Image:</h6>
+                    <img [src]="webcamFirstImage.imageAsDataUrl" width="200"/>
+                </div>   
+              
+    
+                </div>
+                <div class="col-sm-7">
+                  <div role="tabpanel">
+                    <div class="tab-content">
+                      <div role="tabpanel" class="tab-pane active" id="step1">
+                        <h4>Before Starting Exam</h4>
+                        <div class="avatarWrapper text-center">
+                            <webcam  class="custom-styles" [height]="300" [width]="400" [trigger]="triggerObservable" (imageCapture)="handleFirstImage($event)" *ngIf="showWebcam"
+                            [videoOptions]="videoOptions"
+                            [imageQuality]="1"
+                            (initError)="handleInitError($event)"
+                            ></webcam> 
+                            <button class="actionBtn" (click)="triggerSnapshot();">{{labelSCBtn}}</button>
+                        </div>
+                       
+                      </div>                  
+                    </div>
+                  </div>
+                </div>
+              </div>
+           
+        </div>
+        <div class="modal-footer">
+          
+          <button [disabled]="!this.webcamFirstImage" type="button" class="btn mr-1 mb-1 btn-outline-info" (click)="submitImage();">Update Image</button>
+          <!-- <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button> -->
+        </div>
+      </ng-template>
+
+<!-- The Modal -->
+<ng-template #systemIdealDialog let-modal>
+  
+    <div class="modal-header">
+      <h3 class="modal-title text-primary text-bold">It seems there is no activity on exam</h3>       
+    </div>
+    <div class="modal-body">
+
+        <div class="row">
+            <div class="col-sm-9 border-right">
+              
+          <ul class="point-notes">
+              <li>Prees OK button before 20 Seconds to continue exam otherwise you'll logged out from exam. </li>
+              <li>Any unpleasant activity, web browsing tolerance, switching screens is prohibited. Kindly avoid such practice. </li>    
+            </ul>
+            </div>
+            <div class="col-sm-3">
+              <div class="tabpanel text-danger" style="vertical-align: middle;text-align: center;margin-top:25px;">
+                 <h1>{{timeLeftAlert}}</h1>
+                 <h3>seconds left</h3>
+            </div>
+          </div>
+       
+    </div>
+    </div>
+    <div class="modal-footer text-center">
+      
+      <button type="button" class="btn btn-raised gradient-ibiza-sunset white pull-right" (click)="resetTimeIdeal();">Continue Exam</button>
+    </div>
+  </ng-template>

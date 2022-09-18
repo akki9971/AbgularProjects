@@ -1,0 +1,63 @@
+<section id="otp-verify">
+  <div class="container">
+    <div class="row full-height-vh d-flex align-items-center justify-content-center">
+      <div class="col-12 ">
+        <div class="row examin-boxshadow">
+          <div class="col-sm-8 col-md-6 col-lg-8 login-bg mobile-hide">
+            <h3 class="white mb-4 text-center" style="position: absolute;bottom: 0;left: 40px;">
+              let's start making your dreams come true
+            </h3>
+          </div>
+          <div class="col-sm-4 col-md-6 col-lg-4" style="padding: 0;">
+            <div class="card text-center" style="margin: 0;box-shadow: none">
+              <div class="card-img">
+                <img class="mb-2 mt-4" src="assets/img/examindia-logo.png" width="120" />
+              </div>
+                <div class="card-body">
+                  <div class="card-block">
+                    <form [formGroup]="otpForm" (submit)="onSubmit()">
+                      <h2 class="mb-4">Mobile Verification</h2>
+                        <p class="card-text mb-3">
+                            Please confirm the OTP number sent on your registered mobile number ({{ mobileHashed }}).
+                        </p>
+                        <small class="form-text text-muted danger" *ngIf="
+                            !otpForm.get('otp').valid &&
+                            (otpForm.get('otp').dirty || otpForm.get('otp').touched)
+                          ">Please enter a valid OTP.
+                        </small>
+                        <div class="form-group">
+                          <div class="col-md-12">
+                            <input
+                              type="text"
+                              class="form-control mb-3"
+                              formControlName="otp"
+                              placeholder="Please enter 4 digit OTP"
+                              maxlength="4"
+                            />
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="col-md-12">
+                            <button
+                              class="btn btn-warning btn-block btn-raised"
+                              type="submit"
+                            >
+                              Confirm
+                            </button>
+                          </div>
+                        </div>
+                    </form>
+                  </div>
+               </div>
+              <div class="card-footer">
+                <div>
+                  <a [routerLink]="['/auth/login']">Back to Login</a>
+                </div>
+              </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+  </div>
+</section>

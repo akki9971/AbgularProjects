@@ -1,0 +1,29 @@
+<nav class="navbar top-nav">
+    <div class="container-fluid top-nav-container">
+      <div class="navbar-header p-0">
+        <a class="navbar-brand" routerLink="/">
+          <img src="assets/img/examin-logo.png" class="in-logo-img" alt="examin logo"/>
+        </a>
+      </div>
+      <ul class="nav navbar-nav navbar-right m-top-login">
+        <li>
+          <button
+            (click)="navigateByUrl('auth/login')"
+            type="button"
+            class="btn btn-raised btn-light btn-min-width mr-2 mb-1 dn-btn"
+          >
+            LOGIN
+          </button>
+        </li>
+        <li>
+          <button
+            (click)="navigateByUrl('auth/register')"
+            type="button"
+            class="btn btn-raised btn-warning btn-min-width mr-1 mb-1 dn-btn"
+          >
+            REGISTER
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>

@@ -1,0 +1,73 @@
+<div class="content-wrapper" *ngIf="exams">
+  <!--User Profile Starts-->
+  <!--Basic User Details Starts-->
+  <section id="user-view-cover">
+    <div class="row">
+      <div class="col-12">
+        
+        <div class="card profile-with-cover">        
+            
+
+          <div class="card-header pt-2">
+            <h5><i class="icon-list"></i> Exams Information</h5>
+          </div>
+          <div class="card-body">
+            
+            <div class="card-block">
+                <div class="row">
+                    <div class="col-sm-12">
+                      <div class="card">
+                        <div class="card-header">
+                          <h4 class="card-title">Exam Results</h4>
+                        </div>
+                        <div class="card-body">
+                          <div class="card-block">
+                            <table class="table table-responsive-md-md">
+                              <thead>
+                                <tr>
+                                  <th>#</th>
+                                  <th>Full Name</th>
+                                  <th>Mobile</th>
+                                  <th>Exam</th>
+                                  <th>Exam Date</th>
+                                  <th>Total Marks</th>
+                                  <th>Marks Obtained</th>
+                                  <th>Actions</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let exam of exams; let i = index;">
+                                    <td>{{ i + 1 }}</td>
+                                    <td>{{ exam?.student }}</td>
+                                    <td>{{ exam?.mobile }}</td>
+                                    <td>{{ exam?.exam_title }}</td>
+                                    <td>{{ exam?.date }}</td>
+                                    <td>{{ exam?.total_marks }}</td>
+                                    <td>{{ exam?.marks_obtained }}</td>
+                                    <td>                                      
+                                      <a target="_blank" [routerLink]="['/result', exam?.examId, 'view']" [queryParams]="{user: userId}" title="View Complete Result" class="success p-0" data-original-title="View Complete Result">
+                                        <i class="ft-eye font-medium-3 mr-2"></i>
+                                      </a>                                    
+                                    </td>
+                                   
+                                </tr>
+                                
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+   
+   
+   
+</div>

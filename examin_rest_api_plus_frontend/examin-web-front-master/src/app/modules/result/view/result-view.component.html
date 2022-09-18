@@ -1,0 +1,86 @@
+<ng-template #noQuestions>
+  <p>No result found!</p>
+</ng-template>
+
+<div *ngIf="questions && questions.length > 0; else noQuestions" class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Result</h4>
+        <div class="float-left mt-3">
+          <p class="mb-2"><b class="blue">Total Marks:</b> &nbsp; <strong>{{ result.marks }}</strong></p>
+          <p class="mb-2"><b class="green">Marks Obtained:</b> &nbsp; <strong>{{ result.score }}</strong></p>
+        </div> 
+      </div>
+      <div class="card-body">
+        <div class="card-block">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>No.</th>
+                <th>Question</th>
+                <th>A</th>
+                <th>B</th>
+                <th>C</th>
+                <th>D</th>
+                <th>Status</th>
+                <th>Marks</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let question of questions; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>
+                  <p>{{ question.questionL1 }}</p>
+                  <p>{{ question.questionL2 }}</p>
+                </td>
+                <td>
+                  <p>{{ question.AL1 }}</p>
+                  <p>{{ question.AL2 }}</p>
+                </td>
+                <td>
+                  <p>{{ question.BL1 }}</p>
+                  <p>{{ question.BL2 }}</p>
+                </td>
+                <td>
+                  <p>{{ question.CL1 }}</p>
+                  <p>{{ question.CL2 }}</p>
+                </td>
+                <td>
+                  <p>{{ question.DL1 }}</p>
+                  <p>{{ question.DL2 }}</p>
+                </td>
+                <td *ngIf="!question.userAnswer; else attempted">
+                  <span class="red-label">Not Attempted!</span>
+                </td>
+                <ng-template #attempted>
+                  <td *ngIf="question.correctAnswer === question.userAnswer">
+                    <span class="green-label">Correct!</span>
+                  </td>
+                  <td *ngIf="question.correctAnswer !== question.userAnswer">
+                    <span class="red-label">Wrong!</span>
+                  </td>
+                </ng-template>
+                <td>{{ question.marks }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <ng-template #noResult>
+          <div class="card-block">
+            <p>No result found</p>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .red-label {
+    color: red;
+  }
+  .green-label {
+    color: green;
+  }
+</style>

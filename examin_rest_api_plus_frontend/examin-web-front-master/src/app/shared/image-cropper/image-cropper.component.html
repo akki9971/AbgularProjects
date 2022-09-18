@@ -1,0 +1,26 @@
+<div *ngIf="!imageChangedEvent" class="file-input-wrapper text-center mt-4">
+  <button class="btn-file-input btn mr-1 mb-1 btn-outline-success">
+    <i class="fa fa-plus"></i> Upload Photo
+  </button>
+  <input type="file" (change)="fileChangeEvent($event)" accept="image/*" />
+</div>
+
+<image-cropper
+  [imageChangedEvent]="imageChangedEvent"
+  [maintainAspectRatio]="true"
+  [aspectRatio]="4 / 4"
+  [resizeToWidth]="500"
+  format="png"
+  (imageCropped)="imageCropped($event)"
+  (imageLoaded)="imageLoaded()"
+  (cropperReady)="cropperReady()"
+  (loadImageFailed)="loadImageFailed()" class="p-0">
+</image-cropper>
+
+<!-- <img [src]="croppedImage" /> -->
+
+<div class="text-center mt-2 mb-2">
+  <button *ngIf="croppedImage" (click)="saveImage()" class="btn-file-input btn mr-1 mb-1 btn-outline-success">
+    <i class="fa fa-check"></i> {{ buttonLabel }}
+  </button>
+</div>

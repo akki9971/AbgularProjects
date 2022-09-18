@@ -1,0 +1,6 @@
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    <h4 *ngIf="Products===undefined" class="p-5 text-center w-100">Loading...</h4>
+    <div class="col-md-3"  *ngFor="let fetchedItem of Products" >
+     <app-product-item [Item]="fetchedItem"></app-product-item>
+  </div>
+</div>

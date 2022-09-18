@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div *ngIf="questions && questions.length > 0" class="card">
+      <div class="card-header">
+        <h4 class="card-title">Questions</h4>
+      </div>
+      <div class="card-body">
+        <div class="card-block">
+          <select (change)="onFilterTextBoxChanged($event.target.value)"
+            style="padding:2px;margin-top: -33px;float:right;">
+            <option value="" selected>Select Category</option>
+            <ng-container>
+              <option *ngFor="let category of categories" [value]="category.name">{{ category.name }}</option>
+            </ng-container>
+          </select>
+          <ag-grid-angular style="width: 100%;" class="ag-theme-material" [rowData]="questions"
+            [columnDefs]="columnDefs" [enableSorting]="true" [pagination]="true" [enableFilter]="true"
+            [showToolPanel]="showToolPanel" [gridOptions]="gridOptions" [domLayout]="autoHeight"
+            (gridReady)="onGridReady($event)">
+          </ag-grid-angular>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div *ngIf="!questions; else loaded">
+  Loading...
+</div>
+
+<ng-template #loaded>
+  <app-exam-question-card></app-exam-question-card>
+  <button class="btn btn-raised btn-primary"
+    (click)="activateQuestion('prev')"
+    *ngIf="!activeQuestionProps.isFirst">
+    <i class="fa fa-chevron-left"></i> Previous
+  </button>
+  <button class="btn btn-raised btn-primary pull-right m-r-20"
+    (click)="activateQuestion('next')"
+    *ngIf="!activeQuestionProps.isLast">
+    Next <i class="fa fa-chevron-right"></i>
+  </button>
+  <button class="btn btn-raised gradient-ibiza-sunset white pull-right"
+    *ngIf="activeQuestionProps.isLast"
+    (click)="finish()"
+    [disabled]="inProgress">
+    <i class="fa fa-check"></i> Finish
+  </button>
+</ng-template>

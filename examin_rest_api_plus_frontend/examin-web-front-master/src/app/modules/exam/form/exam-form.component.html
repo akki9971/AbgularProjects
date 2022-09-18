@@ -1,0 +1,151 @@
+<section id="horizontal-form-layouts">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="px-3">
+            <form scrollToFirstInvalid class="form form-horizontal" [formGroup]="examForm" (submit)="onSubmit()">
+              <div class="form-body">
+                <h4 class="form-section">
+                  {{ label }} Exam
+                </h4>
+                <div class="form-group row">
+                  <label class="col-md-3 label-control">Title: </label>
+                  <div class="col-md-9">
+                    <input formControlName="title" type="text" class="form-control border-primary" />
+                    <small class="form-text text-muted danger" *ngIf="submitted && examForm.get('title').errors?.required">
+                    Please enter exam title</small>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 label-control">Date (mm/dd/yyyy): </label>
+                  <div class="col-md-9">
+                    <div class="form-group">
+                      <div class="input-group">
+                        <input
+                          type="date"
+                          formControlName="date"
+                          class="form-control" />
+                      </div>
+                      <!-- <small class="form-text text-muted danger" *ngIf="submitted && examForm.get('date').errors?.required">
+                      Please enter exam date</small> -->
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 label-control">Start time: </label>
+                  <div class="col-md-9">
+                    <input
+                      type="time"
+                      formControlName="startTime"
+                      class="form-control" />
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 label-control">End time: </label>
+                  <div class="col-md-9">
+                    <input
+                      type="time"
+                      formControlName="endTime"
+                      class="form-control" />
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 label-control">Institute: </label>
+                  <div class="col-md-9">
+                    <select formControlName="instituteId" class="form-control">
+                      <option *ngFor="let institute of institutes" [value]="institute.instituteId">{{ institute.name }}</option>
+                    </select>
+                    <small class="form-text text-muted danger" *ngIf="submitted && examForm.get('instituteId').errors?.required">
+                    Please select institute</small>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 label-control">Fee amount (INR): </label>
+                  <div class="col-md-9">
+                    <!-- <input formControlName="feeAmount" type="text" class="form-control border-primary" /> -->
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">₹</span>
+                      </div>
+                      <input formControlName="feeAmount" type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
+                      <div class="input-group-append">
+                        <span class="input-group-text">.00</span>
+                      </div>
+                    </div>
+                    <small class="form-text text-muted danger" *ngIf="submitted && examForm.get('feeAmount').errors?.required">
+                    Please enter exam fee</small>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 label-control">Instant result: </label>
+                  <div class="col-md-9">
+                    <div class="custom-control custom-radio custom-control-inline float-left">
+                      <input type="radio" id="instantResult1" name="instantResult" class="custom-control-input" formControlName="instantResult" [value]="true">
+                      <label class="custom-control-label" for="instantResult1">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline float-left">
+                      <input type="radio" id="instantResult2" checked name="instantResult" class="custom-control-input" formControlName="instantResult" [value]="false">
+                      <label class="custom-control-label" for="instantResult2">No</label>
+                    </div>
+                    <small class="form-text text-muted danger" *ngIf="submitted && examForm.get('instantResult').errors?.required">
+                    Please select one option</small>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 label-control">Webcam photos capture: </label>
+                  <div class="col-md-9">
+                    <div class="custom-control custom-radio custom-control-inline float-left">
+                      <input type="radio" id="webcamCapture1" name="webcamCapture" class="custom-control-input" formControlName="webcamCapture" [value]="true">
+                      <label class="custom-control-label" for="webcamCapture1">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline float-left">
+                      <input type="radio" id="webcamCapture2" checked name="webcamCapture" class="custom-control-input" formControlName="webcamCapture" [value]="false">
+                      <label class="custom-control-label" for="webcamCapture2">No</label>
+                    </div>
+                    <small class="form-text text-muted danger" *ngIf="submitted && examForm.get('webcamCapture').errors?.required">
+                    Please select one option</small>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 label-control">Description: </label>
+                  <div class="col-md-9">
+                    <!-- <textarea formControlName="description" class="form-control border-primary"></textarea> -->
+                    <quill-editor class="dib" formControlName="description"></quill-editor>
+                    <small class="form-text text-muted danger" *ngIf="submitted && examForm.get('description').errors?.required">
+                    Please enter exam description</small>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-actions pull-left">
+                <button [routerLink]="['/exam', exam?.examId, 'questions']"
+                  class="btn-file-input btn mr-1 mb-1 btn-outline-success ng-star-inserted">
+                  Show Questions
+                </button>
+              </div>
+
+              <div class="form-actions pull-right">
+                <button type="button" class="btn btn-raised btn-warning mr-1" (click)="backClicked()">
+                  Cancel
+                </button>
+                <button type="submit" class="btn btn-raised btn-primary" [disabled]="inProcess">
+                  {{ label }}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.dib {
+  display: inline-block;
+}
+.ngb-tp-input-container .btn[class*="btn-"] {
+  margin-bottom: 0 !important;
+}
+</style>

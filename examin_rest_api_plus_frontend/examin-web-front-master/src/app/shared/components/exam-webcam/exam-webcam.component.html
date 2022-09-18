@@ -1,0 +1,7 @@
+<div class="card-columns">        
+            <div class="card" *ngFor="let item of screenshots">
+        
+            <img [src]=" imageBaseUrl + item" onError="this.src='assets/img/blankpic.png'"
+                    class="card-img-top" alt="Card image"  />          
+            </div>        
+</div>

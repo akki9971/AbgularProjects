@@ -1,0 +1,127 @@
+<!-- Navbar (Header) Starts -->
+<nav class="header-navbar navbar navbar-expand-lg navbar-light bg-faded p-0">
+    <div class="container-fluid">
+        <div class="navbar-header">
+
+            <div class="row">
+            <div class="col-8">
+                <button type="button" class="navbar-toggle d-lg-none float-left" data-toggle="collapse"
+                (click)="toggleSidebar()" style="margin-left: 10px;">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+                
+                <a (click)="navigateHome()">
+                    <div class="ex-logo">
+                        <img src="assets/img/examin-logo.png">
+                    </div>
+                </a>
+
+            </div>
+            <div class="col-4 p-0">
+                <div class="row mob_nav-right">
+                    <div class="mob_noti">
+                        <div *ngIf="!isAdmin" class="nav-item">
+                            <a class="nav-link position-relative" id="dropdownBasic2" routerLink="/notification">
+                                <i class="ft-bell font-medium-3 blue-grey darken-4"></i>
+                                <span *ngIf="unreadCount" class="notification badge badge-pill badge-danger">{{ unreadCount }}</span>
+                                <p class="d-none">Notifications</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mob_user">
+                        <div class="nav-item" ngbDropdown [placement]="placement">
+                            <a class="nav-link position-relative" id="dropdownBasic3" ngbDropdownToggle>
+                                <i class="ft-user font-medium-3 blue-grey darken-4"></i>
+                                <p class="d-none">User Settings</p>
+                            </a>
+                            <div ngbDropdownMenu aria-labelledby="dropdownBasic3" class="text-left">
+                                <a class="dropdown-item py-1" [routerLink]="['/user', user.userId]">
+                                    <i class="ft-edit mr-2"></i>
+                                    <span>My Profile</span>
+                                </a>
+                                <a class="dropdown-item py-1" [routerLink]="[isAdmin ? '/admin/settings/change-password' : '/user/settings/change-password']">
+                                    <i class="ft-lock mr-2"></i>
+                                    <span>Change Password</span>
+                                </a>
+                                <a class="dropdown-item py-1" [routerLink]="[isAdmin ? '/admin/settings/institute' : '/user/settings/institute']">
+                                    <i class="ft-home mr-2"></i>
+                                    <span>Change Institute</span>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" id="loggedOut" [routerLink]="['/auth/logout']">
+                                    <i class="ft-power mr-2"></i>
+                                    <span>Logout</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+                
+
+            </div>
+            </div>
+            
+            
+
+            
+            
+            <!-- <span class="d-lg-none navbar-right navbar-collapse-toggle">
+                <a class="open-navbar-container" (click)="isCollapsed = !isCollapsed"
+                    [attr.aria-expanded]="!isCollapsed" aria-controls="navbarSupportedContent">
+                    <i class="ft-more-vertical"></i>
+                </a>
+            </span> -->
+        </div>
+        <div class="navbar-container">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isCollapsed">
+                <ul class="navbar-nav">
+                    <li *ngIf="!isAdmin" class="nav-item d-none d-lg-block">
+                        <a href="javascript:;" class="nav-link" id="navbar-fullscreen" appToggleFullscreen
+                            (click)="ToggleClass()">
+                            <i class="{{toggleClass}} font-medium-3 blue-grey darken-4"></i>
+                            <p class="d-none">fullscreen</p>
+                        </a>
+                    </li>
+                    <li *ngIf="!isAdmin" class="nav-item">
+                        <a class="nav-link position-relative" id="dropdownBasic2" routerLink="/notification">
+                            <i class="ft-bell font-medium-3 blue-grey darken-4"></i>
+                            <span *ngIf="unreadCount" class="notification badge badge-pill badge-danger">{{ unreadCount }}</span>
+                            <p class="d-none">Notifications</p>
+                        </a>
+                    </li>
+                    <li class="nav-item" ngbDropdown [placement]="placement" style="margin-right: 20px;">
+                        <a class="nav-link position-relative" id="dropdownBasic3" ngbDropdownToggle>
+                            <i class="ft-user font-medium-3 blue-grey darken-4"></i>
+                            <p class="d-none">User Settings</p>
+                        </a>
+                        <div ngbDropdownMenu aria-labelledby="dropdownBasic3" class="text-left">
+                            <a class="dropdown-item py-1" [routerLink]="['/user', user.userId]">
+                                <i class="ft-edit mr-2"></i>
+                                <span>My Profile</span>
+                            </a>
+                            <a class="dropdown-item py-1" [routerLink]="[isAdmin ? '/admin/settings/change-password' : '/user/settings/change-password']">
+                                <i class="ft-lock mr-2"></i>
+                                <span>Change Password</span>
+                            </a>
+                            <a class="dropdown-item py-1" [routerLink]="[isAdmin ? '/admin/settings/institute' : '/user/settings/institute']">
+                                <i class="ft-home mr-2"></i>
+                                <span>Change Institute</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" [routerLink]="['/auth/logout']">
+                                <i class="ft-power mr-2"></i>
+                                <span>Logout</span>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+<!-- Navbar (Header) Ends -->

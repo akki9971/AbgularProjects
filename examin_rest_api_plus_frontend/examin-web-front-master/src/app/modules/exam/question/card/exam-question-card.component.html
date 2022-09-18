@@ -1,0 +1,77 @@
+<div class="card mt-0" *ngIf="question">
+  <div class="card-header border-bottom">
+    <h4 class="card-title pb-2">Question Number: {{ question.questionId }}</h4>
+  </div>
+  <div class="card-body">
+    <div class="card-block">
+      <div class="mb-3 border-bottom">
+        <p>{{ question.questionL1 }}</p>
+        <p>{{ question.questionL2 }}</p>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="custom-control custom-radio border-bottom mb-3">
+            <input class="custom-control-input"
+              [(ngModel)]="question.userAnswer"
+              (ngModelChange)="onSelection($event)"
+              type="radio"
+              value="A"
+              name="Q_{{ question.questionId }}"
+              id="O_{{ question.questionId }}_A"
+            >
+            <label class="custom-control-label mb-3" attr.for="O_{{ question.questionId }}_A">
+              {{ question.AL1 }}
+              <br>
+              {{ question.AL2 }}
+            </label>
+          </div>
+          <div class="custom-control custom-radio border-bottom mb-3">
+            <input class="custom-control-input"
+              [(ngModel)]="question.userAnswer"
+              (ngModelChange)="onSelection($event)"
+              type="radio"
+              value="B"
+              name="Q_{{ question.questionId }}"
+              id="O_{{ question.questionId }}_B"
+            >
+            <label class="custom-control-label mb-3" attr.for="O_{{ question.questionId }}_B">
+              {{ question.BL1 }}
+              <br>
+              {{ question.BL2 }}
+            </label>
+          </div>
+          <div class="custom-control custom-radio border-bottom mb-3">
+            <input class="custom-control-input"
+              [(ngModel)]="question.userAnswer"
+              (ngModelChange)="onSelection($event)"
+              type="radio"
+              value="C"
+              name="Q_{{ question.questionId }}"
+              id="O_{{ question.questionId }}_C"
+            >
+            <label class="custom-control-label mb-3" attr.for="O_{{ question.questionId }}_C">
+              {{ question.CL1 }}
+              <br>
+              {{ question.CL2 }}
+            </label>
+          </div>
+          <div class="custom-control custom-radio border-bottom mb-3">
+            <input class="custom-control-input"
+              [(ngModel)]="question.userAnswer"
+              (ngModelChange)="onSelection($event)"
+              type="radio"
+              value="D"
+              name="Q_{{ question.questionId }}"
+              id="O_{{ question.questionId }}_D"
+            >
+            <label class="custom-control-label mb-3" attr.for="O_{{ question.questionId }}_D">
+              {{ question.DL1 }}
+              <br>
+              {{ question.DL2 }}
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

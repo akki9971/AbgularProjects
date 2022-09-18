@@ -1,0 +1,282 @@
+section {
+  font-family: "Montserrat", sans-serif;
+}
+
+#maintenance {
+  background-image: url(assets/img/gallery/light-bg.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.wellcome_area {
+  background-image: url(assets/img/landing/bg.jpg);
+  height: 100vh;
+  position: relative;
+  z-index: 1;
+  background-position: bottom center;
+  background-size: cover;
+}
+
+.welcome-thumb img {
+  margin-top: 5%;
+  margin-left: 15%;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  height: auto;
+  width: 100%;
+  -webkit-box-shadow: 0px 0px 40px 18px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0px 0px 40px 18px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 40px 18px rgba(0, 0, 0, 0.25);
+}
+
+.container-fluid {
+  width: 90% !important;
+}
+
+.welcome-h1 {
+  margin-top: 16px;
+  color: #e35c67;
+  font-size: 36px;
+  line-height: 60px;
+}
+
+.welcome-h3 {
+  font-size: 1.2rem;
+  margin-top: 8px;
+  font-weight: 400;
+}
+
+.btn.submit-btn {
+  background-color: #e35c67;
+  // box-shadow: 0px 3px 30px 0px #f34b6073;
+  height: 46px;
+  min-width: 165px;
+  color: #ffffff !important;
+  font-weight: 500;
+  border-radius: 50px;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  padding-top: 11px;
+}
+
+.btn.buy-btn {
+  border: 2px solid #e35c67;
+  // box-shadow: 0px 5px 30px 0px rgba(81, 36, 208, 0.33);
+  height: 46px;
+  min-width: 165px;
+  color: #e35c67 !important;
+  font-weight: 500;
+  border-radius: 50px;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  padding-top: 11px;
+}
+.footer {
+  .btn {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #726a84 !important;
+  }
+  p {
+    font-size: 14px;
+    color: #726a84 !important;
+    font-weight: 400;
+    margin-top: 20px;
+  }
+}
+
+.bg-grey {
+  background-color: #fafafa !important;
+}
+
+.land-p-150 {
+  padding-top: 5rem;
+  // padding-bottom: 10rem;
+}
+
+.section-heading {
+  margin-bottom: 10px;
+}
+
+.mb-5,
+.my-5 {
+  margin-bottom: 3rem !important;
+}
+
+.features img {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  border-radius: 10px;
+  width: 90%;
+}
+
+.border-grey {
+  border: 1px solid #e7e7e7;
+}
+
+.cool-facts-area {
+  position: relative;
+  z-index: auto;
+  background-color: #425389;
+  padding: 80px 0 80px 0;
+}
+.counter-area {
+  p {
+    font-size: 18px;
+    color: #ffffff;
+    margin-bottom: 0;
+    font-weight: 300;
+    letter-spacing: 0.2px;
+    margin-top: 0;
+  }
+  h4 {
+      color: white;
+      font-weight: 500;
+  }
+  h3 {
+    color: #ffffff;
+    font-size: 30px;
+    margin-bottom: 0;
+    line-height: 1;
+    letter-spacing: 0.03rem;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 100;
+    margin-top: 36px;
+  }
+}
+
+.hr-width {
+    width: 50%;
+    margin-left: 25%;
+}
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 2px solid rgba(0,0,0,.1);
+}
+
+.navbar-extraspace {
+  padding: 0.5rem 0
+}
+.in-logo-img {
+  width: 150px;
+}
+.land-pt-50 {
+  padding-top: 0px;
+}
+.in-max-width30 {
+  max-width: 30% !important;
+}
+.m-top-login {
+  margin-top: 8px;
+}
+
+.institute-img {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  margin-bottom: 20px;
+  img {
+    width: 60%;
+  }
+}
+
+
+
+
+
+
+
+/* ======================= small destop =========================== */
+@media screen and (max-width: 1440px) {
+  
+}
+/* ======================= tablet =========================== */
+@media screen and (max-width: 992px) {
+  .t-display-none {
+    display: none;
+  }
+  .m-top-login {
+    position: absolute;
+    right: 20px;
+    top: 16px;
+    margin-top: 0;
+  }
+  .land-pt-50 {
+    padding-top: 0;
+  }
+  .m-land-card {
+    .card-img {
+      max-width: 30%;
+    }
+  }
+  .land-p-150 {
+    padding-top: 8rem;
+    padding-bottom: 4rem;
+  }
+}
+
+/* ======================= mobile =========================== */
+@media screen and (max-width: 600px) {
+  .m-top-login {
+    position: absolute;
+    right: 20px;
+    top: 16px;
+  }
+  .land-pt-50 {
+    padding-top: 0;
+  }
+  .land-p-150 {
+    padding-top: 4rem;
+    padding-bottom: 0rem;
+  }
+  .welcome-h1 {
+    font-size: 24px;
+    line-height: 40px;
+  }
+  .m-land-card {
+    .card-body {
+      padding: 0;
+      text-align: center;
+    }
+  }
+  .m-display-none {
+    display: none;
+  }
+  .in-about {
+    h2 {
+      font-size: 24px;
+    }
+    .welcome-h3{
+      font-size: 1rem;
+    }
+  }
+  .footer {
+    text-align: center;
+  }
+  .in-logo-img {
+    margin-left: -24px;
+  }
+  .institute-img {
+    width: 60%;
+  }
+  .institute-card {
+    .card-title {
+      font-size: 12px;
+    font-weight: bold;
+    }
+    .card-text {
+      font-size: 12px;
+    }
+    .btn {
+      padding: 4px 10px;
+    font-size: 12px;
+    }
+  }
+}

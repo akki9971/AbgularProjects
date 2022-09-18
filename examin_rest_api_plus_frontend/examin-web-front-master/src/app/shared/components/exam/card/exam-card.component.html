@@ -1,0 +1,52 @@
+<!-- <div class="row" matchHeight="card">
+  <div class="col-xl-3 col-lg-6 col-12">
+    <a [routerLink]="['/exam/' + exam.examId + '/instruction']">
+      <div class="card">
+        <div class="card-body">
+          <div class="media">
+            <div class="media-body text-left">
+              <h3 class="mb-1 warning">{{ exam?.title }}</h3>
+              <a *ngIf="isAdmin" [routerLink]="['/exam/' + exam.examId + '/questions']">
+                <span class="text-muted">
+                  Questions
+                </span>
+              </a>
+            </div>
+            <div class="media-right align-self-center">
+              <i class="icon-book-open warning font-large-2 float-right"></i>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer border-top-blue-grey border-top-lighten-5 text-muted">
+          <a [routerLink]="['/exam/' + exam.examId + '/instruction']">Read more</a>
+        </div>
+      </div>
+    </a>
+  </div>
+</div> -->
+<div class="col-xl-4 col-lg-4 col-12" style="float: left;">
+  <a [routerLink]="['/exam/' + exam.examId + '/instruction']">
+    <div class="card">
+      <div class="card-content">
+        <div class="px-3 py-3">
+          <div class="media">
+            <div class="media-body text-left">
+              <h5 class="mb-1 danger">
+                <strong>{{ exam?.title }}</strong>
+              </h5>
+              <a *ngIf="!isAdmin" [routerLink]="['/exam/' + exam.examId + '/instruction']">
+                <ng-template #notPaid>
+                  <span>Apply here</span>
+                </ng-template>
+                <span *ngIf="exam?.paymentStatus === 'credit'; else notPaid">Applied for {{ exam?.title }}</span>
+              </a>
+              <a *ngIf="isAdmin" [routerLink]="['/exam/' + exam.examId + '/edit']">
+                <span>Update</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>

@@ -1,0 +1,39 @@
+<div class="row">
+   
+<div class="col-md-12 mt3">
+    <section id="simple-table">
+      <div class="row">
+        <div class="col-sm-12 mt-3">
+          <div class="row">
+            <div class="col-md-12">
+            <p>Filter by:</p>
+            </div>
+            <app-institute-selector
+              class="col-xl-4 col-lg-6 col-md-12"
+              (onSelection)="setParams('instituteId', $event)"
+            ></app-institute-selector>
+           
+          </div>
+         
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+
+<div *ngIf="isLoading; else loaded">
+  Loading...
+</div>
+
+<ng-template #loaded>
+
+  <div *ngIf="exams && exams.length > 0; else noRecordsFound">
+    <app-exam-card [isAdmin]="isAdmin || isModerator" *ngFor="let exam of exams" [exam]="exam"></app-exam-card>
+  </div>
+
+  <ng-template #noRecordsFound>
+    No records found!
+  </ng-template>
+
+</ng-template>

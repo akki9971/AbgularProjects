@@ -1,0 +1,121 @@
+<section id="login">
+  <div class="container">
+    <app-navbar-offline></app-navbar-offline>
+    <div
+      class="row d-flex align-items-center justify-content-center loginblock-100"
+    >
+      <div class="col-12 ">
+        <div class="row examin-boxshadow">
+          <div class="col-sm-8 col-md-6 col-lg-8 login-bg mobile-hide">
+            <h3
+              class="white mb-4 text-center"
+              style="position: absolute;bottom: 0;left: 40px;"
+            >
+              let's start making your dreams come true
+            </h3>
+          </div>
+          <div class="col-sm-4 col-md-6 col-lg-4" style="padding: 0;">
+            <div class="card text-center" style="margin: 0;box-shadow: none">
+              <div class="card-img">
+                <img
+                  class="mb-2 mt-3"
+                  src="assets/img/examindia-logo.png"
+                  width="120"
+                />
+              </div>
+              <div class="card-body">
+                <div class="card-block">
+                  <h4 class="mb-4">Candidate Login</h4>
+                  <form [formGroup]="loginForm" (submit)="onSubmit()">
+                    <div class="form-group">
+                      <div class="col-md-12 txt-align">
+                        <label for="mobileNumber">Mobile Number:</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          formControlName="mobile"
+                          placeholder="Mobile number"
+                          maxlength="10"
+                          minlength="10"
+                          required
+                        />
+                        <small
+                          class="form-text text-muted danger"
+                          *ngIf="
+                            submitted &&
+                            loginForm.get('mobile').errors?.required
+                          "
+                          >Mobile number is required</small
+                        >
+                        <small
+                          class="form-text text-muted danger"
+                          *ngIf="
+                            submitted && loginForm.get('mobile').errors?.pattern
+                          "
+                          >Please enter valid mobile number</small
+                        >
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-md-12 txt-align">
+                        <label for="password">Password:</label>
+                        <input
+                          type="password"
+                          class="form-control"
+                          formControlName="password"
+                          placeholder="Password"
+                          required
+                        />
+                        <small
+                          class="form-text text-muted danger"
+                          *ngIf="
+                            submitted &&
+                            loginForm.get('password').errors?.required
+                          "
+                          >Password is required</small
+                        >
+                      </div>
+                    </div>
+
+                    <!-- <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0 ml-3">
+                                                    <input type="checkbox" class="custom-control-input" checked id="rememberme">
+                                                    <label class="custom-control-label float-left white" for="rememberme">Remember Me</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+
+                    <div class="form-group">
+                      <div class="col-md-12">
+                        <button
+                          type="submit"
+                          class="btn btn-warning btn-block btn-raised"
+                          [disabled]="inProcess"
+                        >
+                          LOGIN
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="card-footer">
+                <div class="float-left">
+                  <a [routerLink]="['/auth/forgot-password']"
+                    >Forgot Password</a
+                  >
+                </div>
+                <div class="float-right">
+                  <a [routerLink]="['/auth/register']">New User?</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

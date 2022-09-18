@@ -1,0 +1,382 @@
+<div class="content-wrapper" *ngIf="user">
+  <!--User Profile Starts-->
+  <!--Basic User Details Starts-->
+  <section id="user-view-cover">
+    <div class="row">
+      <div class="col-12">
+        <div class="card profile-with-cover">
+          <div
+            class="card-img-top img-fluid bg-cover height-200"
+            style="background: url('assets/img/photos/profile-banner.jpg') 50%;"
+          ></div>
+
+          <div class="media profile-cover-details row">
+            <div class="col-md-4 examin-m-hide">
+              <div class="align-self-start halfway-fab pl-3 pt-5">
+                <div class="text-left">
+                  <h3 class="card-title white">
+                    {{ user?.fullName }}
+                    <a [routerLink]="['/user', user.userId, 'edit']" class="white ml-3">
+                      <i class="fa fa-edit"></i> &nbsp;
+                    </a>
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+              <div class="align-self-center halfway-fab text-center content">
+                <a class="profile-image">
+                  <img [src]=" imageBaseUrl + user?.profileImage " onError="this.src='assets/img/blankpic.png'"
+                    class="rounded-circle img-border gradient-summer width-200 content-image" alt="Card image" style="width: 120px"
+                  />
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="card-header pt-0">
+            <h5><i class="icon-users"></i> Personal Information</h5>
+          </div>
+          <div class="card-body">
+            <div class="card-block">
+              <div class="row">
+                <div class="col-12 col-md-4 col-lg-4">
+                  <ul class="no-list-style">
+                    <li class="mb-2">
+                      <span class="text-bold-500 primary">
+                        <i class="icon-user font-small-3"></i>
+                        Full Name:</span
+                      >
+                      <span class="display-block overflow-hidden">{{
+                        user?.fullName
+                      }}</span>
+                    </li>
+                    <li class="mb-2">
+                      <span class="text-bold-500 primary"
+                        ><i class="icon-present font-small-3"></i> Birthdate:
+                      </span>
+                      <span class="display-block overflow-hidden">{{
+                        user?.dateOfBirth | date: "mediumDate"
+                      }}</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="col-12 col-md-4 col-lg-4">
+                  <ul class="no-list-style">
+                    <li class="mb-2">
+                      <span class="text-bold-500 primary"
+                        ><i class="icon-user-follow font-small-3"></i> Father's
+                        Name:</span
+                      >
+                      <span class="display-block overflow-hidden">{{
+                        user?.fathersName | titlecase
+                      }}</span>
+                    </li>
+                    <li class="mb-2">
+                      <span class="text-bold-500 primary"
+                        ><i class="icon-user-female font-small-3"></i> Mother's
+                        Name
+                      </span>
+                      <span class="display-block overflow-hidden">{{
+                        user?.mothersName | titlecase
+                      }}</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-12 col-md-4 col-lg-4">
+                  <ul class="no-list-style">
+                    <li class="mb-2">
+                      <span class="text-bold-500 primary"
+                        ><i class="icon-symbol-male font-small-3"></i> Gender:
+                      </span>
+                      <span class="display-block overflow-hidden">{{
+                        user?.gender | titlecase
+                      }}</span>
+                    </li>
+                    <li class="mb-2">
+                      <span class="text-bold-500 primary"
+                        ><i class="icon-user-female font-small-3"></i> Category
+                      </span>
+                      <span class="display-block overflow-hidden">{{
+                        user?.caste
+                      }}</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 col-md-4 col-lg-4">
+                  <ul class="no-list-style">
+                    <li class="mb-2">
+                      <span class="text-bold-500 primary"
+                        ><i class="icon-user-follow font-small-3"></i> Religion</span
+                      >
+                      <span class="display-block overflow-hidden">{{
+                        user?.religion | titlecase
+                      }}</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-12 col-md-4 col-lg-4">
+                  <ul class="no-list-style">
+                    <li class="mb-2">
+                      <span class="text-bold-500 primary"
+                        ><i class="icon-user-follow font-small-3"></i> Aadhaar Number</span
+                      >
+                      <span class="display-block overflow-hidden">{{
+                        user?.aadhaarNumber
+                      }}</span>
+                    </li>
+                  </ul>
+                </div>
+                <!-- <div class="col-12 col-md-4 col-lg-4">
+                  <ul class="no-list-style">
+                    <li class="mb-2">
+                      <span class="text-bold-500 primary"
+                        ><i class="icon-user-female font-small-3"></i>Caste
+                      </span>
+                      <span class="display-block overflow-hidden">{{
+                        user?.caste
+                      }}</span>
+                    </li>
+                  </ul>
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="user-view-contact">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <h5><i class="icon-call-in"></i> Contact Details</h5>
+          </div>
+          <div class="card-body">
+            <div class="card-block">
+              <div class="row">
+                <div class="col-12 col-md-4 col-lg-4">
+                  <ul class="no-list-style">
+                    <li class="mb-2">
+                      <span class="text-bold-500 primary"
+                        ><i class="icon-screen-smartphone font-small-3"></i>
+                        Mobile Number:
+                      </span>
+                      <span class="display-block overflow-hidden"
+                        >+91-{{ user?.mobile }}</span
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-12 col-md-4 col-lg-4">
+                  <ul class="no-list-style">
+                    <li class="mb-2">
+                      <span class="text-bold-500 primary"
+                        ><i class="icon-envelope font-small-3"></i> Email:
+                      </span>
+                      <span class="display-block overflow-hidden">{{
+                        user?.email | lowercase
+                      }}</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-12 col-md-4 col-lg-4">
+                  <ul class="no-list-style">
+                    <li class="mb-2">
+                      <span class="text-bold-500 primary"
+                        ><i class="icon-screen-smartphone font-small-3"></i>
+                        Parent's Number:
+                      </span>
+                      <span *ngIf="user?.parentsNumber" class="display-block overflow-hidden">+91-{{ user?.parentsNumber }}</span>
+                      <span *ngIf="!user?.parentsNumber" class="display-block overflow-hidden">--</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="user-view-address">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <h5><i class="icon-map"></i> Permanent Address</h5>
+          </div>
+          <div class="card-body">
+            <div class="card-block">
+              <div class="row">
+                <div class="col-12 col-md-4 col-lg-4">
+                  <ul class="no-list-style">
+                    <li class="mb-2">
+                      <span class="text-bold-500 primary"
+                        ><i class="icon-home font-small-3"></i> Flat, House No, Building</span
+                      >
+                      <span class="display-block overflow-hidden">{{
+                        user?.address?.addressLine1
+                      }}</span>
+                    </li>
+                    <!-- <li class="mb-2">
+                      <span class="text-bold-500 primary"
+                        ><i class="icon-home font-small-3"></i> Address line 2:
+                      </span>
+                      <span class="display-block overflow-hidden">{{
+                        user?.address?.addressLine2
+                      }}</span>
+                    </li> -->
+                    <li class="mb-2">
+                      <span class="text-bold-500 primary"
+                        ><i class="icon-home font-small-3"></i> Pincode:
+                      </span>
+                      <span class="display-block overflow-hidden">{{
+                        user?.address?.pincode
+                      }}</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-12 col-md-4 col-lg-4">
+                  <ul class="no-list-style">
+                    <li class="mb-2">
+                      <span class="text-bold-500 primary">
+                        <i class="icon-home font-small-3"></i>
+                        Area, Street, Sector, Village</span
+                      >
+                      <span class="display-block overflow-hidden">{{
+                        user?.address?.cityVillageTown
+                      }}</span>
+                    </li>
+                    <li class="mb-2">
+                      <span class="text-bold-500 primary">
+                        <i class="icon-home font-small-3"></i> Town / City
+                      </span>
+                      <span class="display-block overflow-hidden">{{
+                        user?.address?.district
+                      }}</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-12 col-md-4 col-lg-4">
+                  <ul class="no-list-style">
+                    <li class="mb-2">
+                      <span class="text-bold-500 primary"
+                        ><i class="icon-home font-small-3"></i> State / Province / Region
+                      </span>
+                      <span class="display-block overflow-hidden">{{
+                        user?.address?.state
+                      }}</span>
+                    </li>
+                    <li class="mb-2">
+                      <span class="text-bold-500 primary"
+                        ><i class="icon-home font-small-3"></i> Country:
+                      </span>
+                      <span class="display-block overflow-hidden">{{
+                        user?.address?.country
+                      }}</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="user-view-address">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <h5><i class="icon-map"></i> Correspondence Address</h5>
+          </div>
+          <div class="card-body">
+            <div class="card-block">
+              <div class="row">
+                <div class="col-12 col-md-4 col-lg-4">
+                  <ul class="no-list-style">
+                    <li class="mb-2">
+                      <span class="text-bold-500 primary"
+                        ><i class="icon-home font-small-3"></i> Flat, House No, Building</span>
+                      <span class="display-block overflow-hidden">{{
+                        user?.secondaryAddress?.addressLine1
+                      }}</span>
+                    </li>
+                    <!-- <li class="mb-2">
+                      <span class="text-bold-500 primary"
+                        ><i class="icon-home font-small-3"></i> Address line 2:
+                      </span>
+                      <span class="display-block overflow-hidden">{{
+                        user?.secondaryAddress?.addressLine2
+                      }}</span>
+                    </li> -->
+                    <li class="mb-2">
+                      <span class="text-bold-500 primary"
+                        ><i class="icon-home font-small-3"></i> Pincode:
+                      </span>
+                      <span class="display-block overflow-hidden">{{
+                        user?.secondaryAddress?.pincode
+                      }}</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-12 col-md-4 col-lg-4">
+                  <ul class="no-list-style">
+                    <li class="mb-2">
+                      <span class="text-bold-500 primary">
+                        <i class="icon-home font-small-3"></i>
+                        Area, Street, Sector, Village</span
+                      >
+                      <span class="display-block overflow-hidden">{{
+                        user?.secondaryAddress?.cityVillageTown
+                      }}</span>
+                    </li>
+                    <li class="mb-2">
+                      <span class="text-bold-500 primary">
+                        <i class="icon-home font-small-3"></i> Town / City
+                      </span>
+                      <span class="display-block overflow-hidden">{{
+                        user?.secondaryAddress?.district
+                      }}</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-12 col-md-4 col-lg-4">
+                  <ul class="no-list-style">
+                    <li class="mb-2">
+                      <span class="text-bold-500 primary"
+                        ><i class="icon-home font-small-3"></i> State / Province / Region
+                      </span>
+                      <span class="display-block overflow-hidden">{{
+                        user?.secondaryAddress?.state
+                      }}</span>
+                    </li>
+                    <li class="mb-2">
+                      <span class="text-bold-500 primary"
+                        ><i class="icon-home font-small-3"></i> Country:
+                      </span>
+                      <span class="display-block overflow-hidden">{{
+                        user?.secondaryAddress?.country
+                      }}</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

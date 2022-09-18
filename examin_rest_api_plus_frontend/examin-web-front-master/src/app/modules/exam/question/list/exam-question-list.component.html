@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div *ngIf="questions && questions.length > 0" class="card">
+      <div class="card-header">
+        <h4 class="card-title">Questions</h4>
+      </div>
+      <div class="card-body">
+        <div class="card-block">
+          <table class="table table-responsive-md-md">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>QuestionL1</th>
+                <th>QuestionL2</th>
+                <th>AL1</th>
+                <th>AL2</th>
+                <th>BL1</th>
+                <th>BL2</th>
+                <th>CL1</th>
+                <th>CL2</th>
+                <th>DL1</th>
+                <th>DL2</th>
+                <th>Marks</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let question of questions; let i = index;">
+                <td>{{ i + 1 }}</td>
+                <td>{{ question.questionL1 }}</td>
+                <td>{{ question.questionL2 }}</td>
+                <td>{{ question.AL1 }}</td>
+                <td>{{ question.AL2 }}</td>
+                <td>{{ question.BL1 }}</td>
+                <td>{{ question.BL2 }}</td>
+                <td>{{ question.CL1 }}</td>
+                <td>{{ question.CL2 }}</td>
+                <td>{{ question.DL1 }}</td>
+                <td>{{ question.DL2 }}</td>
+                <td>{{ question.marks }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!questions || questions.length === 0">
+      <input type="file" (change)="fileChangeEvent($event)"/>
+    </div>
+  </div>
+</div>

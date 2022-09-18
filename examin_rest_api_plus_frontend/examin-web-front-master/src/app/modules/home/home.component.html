@@ -1,0 +1,113 @@
+<div class="content-wrapper p-0">
+
+  <ng-container *ngIf="notifications && notifications.length > 0">
+    <div *ngFor="let notification of notifications | slice:0:1">
+      <app-notification-card [notification]="notification"></app-notification-card>
+    </div>
+  </ng-container>
+
+  <div>   
+  <h3 class="mt-2">Upcoming Exams</h3>
+  </div>   
+
+  
+  <app-institute-block
+    [institute]="institute"
+    [exams]="activeExams"     
+  ></app-institute-block>
+  
+<!-- <ng-container *ngIf="exams && exams.length > 0;">
+    <hr>
+<h3>Applied Exams</h3>
+    
+    <div class="row" *ngIf="exams && exams.length > 0; else noExams" matchHeight="card">
+      <div class="col-md-12">  
+      <app-exam-card
+          *ngFor="let exam of exams"
+          [isAdmin]="false"
+          [exam]="exam"
+        ></app-exam-card>
+      </div>
+    </div>
+ 
+</ng-container> -->
+
+
+
+  <div class="row">
+
+    <div class="col-12 col-md-6 col-lg-8">
+      <div class="row">
+        <div class="col-md-12">
+          <!-- <div class="card">
+            <div class="card-body">
+              <div class="card-block">
+                <h4 class="text-center card-title">
+                  Demo Exam
+                </h4>
+
+                <p class="text-center mt-3">
+                   <button type="button" class="btn mr-1 mb-1 btn-outline-info disabled" [routerLink]="['/exam', 17, 'start']">
+                    Start Demo Exam
+                   </button>
+                </p>
+
+                <h4>Notes:-</h4>
+                <ul>
+                  <li>Demo Exam starts on 7 Sept 2020 with available time slots (9AM, 12PM, 3PM and 6PM).</li>
+                  <li>You can attend the demo exam only once.</li>
+                  <li>Please don't refresh the page during test.</li>
+                  <li>Please don't use browser back button.</li>
+                  <li>
+                    Use Next and Back buttons to move on to the next or previous
+                    question in the test if available.
+                  </li>
+                  <li>
+                    After you finish the test, click on the Submit button to
+                    Submit your test.
+                  </li>
+                  <li>Click the "start demo exam" button above to start.</li>
+                </ul>
+                <h4>Instruction for demo exam:-</h4>
+                <div class="card-body">
+                  <div class="card-block">
+                    <table class="table mb-0">
+                      <tbody>
+                        <tr>
+                          <td>Total questions</td>
+                          <td>20</td>
+                        </tr>
+                        <tr>
+                          <td>Time duration</td>
+                          <td>10 minutes</td>
+                        </tr>
+                        <tr>
+                          <td>Total marks</td>
+                          <td>20 marks</td>
+                        </tr>
+                        <tr>
+                          <td>Negative Marking</td>
+                          <td>No</td>
+                        </tr>
+                        <tr>
+                          <td>Result Declaration</td>
+                          <td>Immediately after Completion</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-12 col-md-6 col-lg-4">
+      <app-user-card [user]="user"></app-user-card>
+    </div>
+  
+  </div>
+</div>

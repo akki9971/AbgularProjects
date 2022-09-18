@@ -1,0 +1,36 @@
+<div class="card mt-0">
+  <div class="card-header border-bottom">
+    <h4 class="card-title pb-2">Question Palette</h4>
+  </div>
+  <div class="card-body">
+    <div class="text-center border-bottom">
+      <!-- <button class="btn btn-raised btn-success btn-sm mr-1">01</button>
+      <button class="btn btn-raised btn-danger btn-sm mr-1">02</button> -->
+      <button
+        class="btn-raised"
+        [class.selected]="question.active === true"
+        [class.btn-success]="question.userAnswer"
+        [class.btn-danger]="!question.userAnswer"
+        class="btn btn-raised btn-outline-secondary btn-sm mr-1"
+        *ngFor="let question of questions$ | async; let i = index;"
+        (click)="activateQuestion(question.questionId)" >{{ i + 1 }}</button>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 mt-3">
+        <button class="btn btn-raised btn-danger btn-sm mr-1">
+          {{ helperService.numberPadding(unansweredQuestions$ | async, 2) }}
+        </button>Not Answered
+      </div>
+      <div class="col-md-12">
+        <button class="btn btn-raised btn-success btn-sm mr-1">
+          {{ helperService.numberPadding(answeredQuestions$ | async, 2) }}
+        </button>Answered
+      </div>
+      <!-- <div class="col-md-12">
+        <button class="btn btn-raised btn-danger btn-sm mr-1">00</button>
+        - Not Answered
+      </div> -->
+    </div>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+// Login Page
+
+#login {
+  background-color: #f5f7fa;
+
+  .login-img {
+    padding: 0;
+    background: #f0f0f0;
+  }
+
+  .login-btn {
+    .btn.btn-outline-primary {
+      &:hover {
+        a {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .recover-pass {
+    button.btn.btn-primary {
+      color: #fff !important;
+    }
+  }
+
+  .forgot-password-option,
+  .remember-me {
+
+    a.text-decoration-none,
+    .custom-control-label {
+      font-size: 14px;
+    }
+  }
+}
+
+.login-bg {
+  background-image: url("https://images.unsplash.com/photo-1508780709619-79562169bc64?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; 
+  position: relative;
+}
+
+.examin-boxshadow {
+  -webkit-box-shadow: 0 6px 0px 0 rgba(0, 0, 0, 0.01), 0 15px 32px 0 rgba(0, 0, 0, 0.06);
+-moz-box-shadow: 0 6px 0px 0 rgba(0, 0, 0, 0.01), 0 15px 32px 0 rgba(0, 0, 0, 0.06);
+box-shadow: 0 6px 0px 0 rgba(0, 0, 0, 0.01), 0 15px 32px 0 rgba(0, 0, 0, 0.06);
+}
+
+.loginblock-100 {
+  margin-top: 100px;
+}
+
+
+@media screen and (max-width: 992px) {
+
+  .loginblock-100 {
+    margin-top: 80px;
+  }
+
+}
+@media screen and (max-width: 600px) {
+  .mobile-hide {
+    display: none
+  }
+  .loginblock-100 {
+    margin-top: 50px;
+  }
+}
+
+.txt-align {
+  text-align: left;
+}

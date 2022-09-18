@@ -1,0 +1,56 @@
+<section id="regestration">
+  <div class="container">
+    <app-navbar-offline></app-navbar-offline>
+    <div class="row d-flex align-items-center justify-content-center loginblock-100">
+      <div class="col-12">
+        <div class="row examin-boxshadow">
+          <div class="col-sm-8 col-md-6 col-lg-8 login-bg mobile-hide">
+            <ng-container *ngIf="institutes">
+                
+              <div class="cc-selector">
+                <a *ngFor="let institute of institutes"
+                  [class.active]="institute.uniqueName == instituteUniqueName"
+                  routerLink="/auth/register"
+                  [queryParams]="{ institute: institute.uniqueName }"
+                >
+                  <label class="drinkcard-cc {{institute.uniqueName}}"></label>
+                </a>
+                <!-- <a [class.active]="institute == 'mvsu'" routerLink="/auth/register" [queryParams]="{ institute: 'mvsu' }">
+                  <label class="drinkcard-cc mvsu" for="mvsu"></label>
+                </a>
+                <a [class.active]="institute == 'examin'" routerLink="/auth/register" [queryParams]="{ institute: 'examin' }">
+                  <label class="drinkcard-cc examin" for="examin"></label>
+                </a> -->
+              </div>
+              
+            </ng-container>
+            <h3 class="text-center white mb-2" style="position: absolute;bottom: 55px;">Select account type</h3>
+          </div>
+          <div class="col-sm-4 col-md-6 col-lg-4" style="padding: 0;">
+            <div class="card text-center" style="margin: 0;box-shadow: none">
+              <!-- <div class="card-img">
+                <img class="mt-2" src="assets/img/examindia-logo.png" width="120" />
+              </div> -->
+              <div class="card-body">
+                <div class="card-block">
+                  <label class="drinkcard-cc {{instituteUniqueName}}"></label>
+                  <h4 class="mb-2">Create Account</h4>
+                  <app-register-form
+                    (registered)="registered($event)"
+                    [institutes]="institutes"
+                    [institute]="selectedInstitute"
+                  ></app-register-form>
+                </div>
+              </div>
+              <!-- <div class="card-footer text-center">
+                <div>
+                  <a [routerLink]="['/auth/login']">Login here</a>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

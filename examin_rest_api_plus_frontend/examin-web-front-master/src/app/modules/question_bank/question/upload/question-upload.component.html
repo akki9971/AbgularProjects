@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Upload Questions</h4>
+      </div>
+      <div class="card-body">
+        <div class="card-block">
+          <div class="form-body">
+            <div class="col-md-9">
+              <select name="categoryId" class="form-control" (change)="setCategory($event)">
+                <option *ngFor="let category of categories" [value]="category.categoryId">{{ category.name }}
+                </option>
+              </select>
+            </div>
+            <div class="col-md-9">
+              <input type="file" (change)="fileChangeEvent($event)" class="form-control" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

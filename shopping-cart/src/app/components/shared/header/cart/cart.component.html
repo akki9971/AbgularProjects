@@ -1,0 +1,72 @@
+<div class="container-fluid" *ngIf="products.length > 0">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card-table" *ngIf="true">
+                <div class="card-product">
+                    <table class="table table-responsive">
+                        <thead>
+                            <tr>
+                                <th>Sr.No</th>
+                                <th>Product Name</th>
+                                <th>Product Image</th>
+                                <th>Description</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let Item of products; let i = index">
+                                <td>{{i+1}}</td>
+                                <td>{{Item.title}}</td>
+                                <td><img style="width: 120px;" src="{{Item.image}}" alt=""></td>
+                                <td>{{Item.description}}</td>
+                                <td>{{Item.price}}</td>
+                                <td><button (click)="decrement(Item)">-</button>{{Item.quantity}}<button
+                                        (click)="increment(Item)">+</button></td>
+                                <td>{{Item.total * Item.quantity}}</td>
+                                <td>
+                                    <button (click)="removeItem(Item)" class="btn btn-danger">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 order-md-last">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-primary">Your cart</span>
+                <span class="badge bg-primary rounded-pill">{{totalItem}}</span>
+            </h4>
+            <ul class="list-group mb-3" *ngFor="let Item of products">
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                    <div>
+                        <h6 class="my-0">{{Item.title}}</h6>
+                        <small class="text-muted">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</small>
+                    </div>
+                    <span class="text-muted">{{Item.price}}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Total </span>
+                    <strong>{{Item.price * Item.quantity | currency:'INR'}}</strong>
+                </li>
+            </ul>
+            <ul>
+
+                <li class="primary w-100" >Grand Total: {{grandTotal}} </li>
+            </ul>
+
+            <button class="btn btn-primary w-100" type="button" routerLink="/checkoutcomponent">PLACE ORDER</button>
+        </div>
+    </div>
+</div>
+<div class="container emptyCartCont" *ngIf="products.length===0">
+    <div class="center">
+        <img src="https://cdn2.iconfinder.com/data/icons/shopping-v1-1/64/add_shopping_cart_item-1024.png" alt="">
+        <h4>your cart is empty</h4>
+        <h6>Add items to it now</h6>
+        <button class="btn btn-primary" routerLink="/productslidecomponent">Shop now</button>
+    </div>
+</div>

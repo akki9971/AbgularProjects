@@ -1,0 +1,170 @@
+<section id="horizontal-form-layouts">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="px-3">
+            <form scrollToFirstInvalid class="form form-horizontal" [formGroup]="questionForm" (submit)="onSubmit()">
+              <div class="form-body">
+                <h4 class="form-section">
+                  {{ label }} Question
+                </h4>
+                <div class="form-group row">
+                  <label class="col-md-3 label-control">Question L1: </label>
+                  <div class="col-md-9">
+                    <!-- <textarea formControlName="description" class="form-control border-primary"></textarea> -->
+                    <quill-editor class="dib" formControlName="questionL1"></quill-editor>
+                    <small class="form-text text-muted danger"
+                      *ngIf="submitted && questionForm.get('questionL1').errors?.required">
+                      Please enter exam Question L1</small>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 label-control">Question L2: </label>
+                  <div class="col-md-9">
+                    <quill-editor class="dib" formControlName="questionL2"></quill-editor>
+                    <small class="form-text text-muted danger"
+                      *ngIf="submitted && questionForm.get('questionL2').errors?.required">
+                      Please enter exam Question L2</small>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 label-control">AL1: </label>
+                  <div class="col-md-9">
+                    <input formControlName="AL1" type="text" class="form-control border-primary" />
+                    <small class="form-text text-muted danger"
+                      *ngIf="submitted && questionForm.get('AL1').errors?.required">
+                      Please enter AL1</small>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 label-control">AL2: </label>
+                  <div class="col-md-9">
+                    <input formControlName="AL2" type="text" class="form-control border-primary" />
+                    <small class="form-text text-muted danger"
+                      *ngIf="submitted && questionForm.get('AL2').errors?.required">
+                      Please enter AL2</small>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 label-control">BL1: </label>
+                  <div class="col-md-9">
+                    <input formControlName="BL1" type="text" class="form-control border-primary" />
+                    <small class="form-text text-muted danger"
+                      *ngIf="submitted && questionForm.get('BL1').errors?.required">
+                      Please enter BL1</small>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 label-control">BL2: </label>
+                  <div class="col-md-9">
+                    <input formControlName="BL2" type="text" class="form-control border-primary" />
+                    <small class="form-text text-muted danger"
+                      *ngIf="submitted && questionForm.get('BL2').errors?.required">
+                      Please enter BL1</small>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 label-control">CL1: </label>
+                  <div class="col-md-9">
+                    <input formControlName="CL1" type="text" class="form-control border-primary" />
+                    <small class="form-text text-muted danger"
+                      *ngIf="submitted && questionForm.get('CL1').errors?.required">
+                      Please enter CL1</small>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 label-control">CL2: </label>
+                  <div class="col-md-9">
+                    <input formControlName="CL2" type="text" class="form-control border-primary" />
+                    <small class="form-text text-muted danger"
+                      *ngIf="submitted && questionForm.get('CL2').errors?.required">
+                      Please enter CL2</small>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 label-control">DL1: </label>
+                  <div class="col-md-9">
+                    <input formControlName="DL1" type="text" class="form-control border-primary" />
+                    <small class="form-text text-muted danger"
+                      *ngIf="submitted && questionForm.get('DL1').errors?.required">
+                      Please enter DL1</small>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 label-control">DL2: </label>
+                  <div class="col-md-9">
+                    <input formControlName="DL2" type="text" class="form-control border-primary" />
+                    <small class="form-text text-muted danger"
+                      *ngIf="submitted && questionForm.get('DL2').errors?.required">
+                      Please enter DL2</small>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label class="col-md-3 label-control">Category: </label>
+                  <div class="col-md-9">
+                    <select formControlName="categoryId" class="form-control">
+                      <option *ngFor="let category of categories" [value]="category.categoryId">{{ category.name }}
+                      </option>
+                    </select>
+                    <small class="form-text text-muted danger"
+                      *ngIf="submitted && questionForm.get('categoryId').errors?.required">
+                      Please select Category</small>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 label-control">Answer: </label>
+                  <div class="col-md-9">
+                    <div class="custom-control custom-radio custom-control-inline float-left">
+                      <input type="radio" id="correctAnswer1" name="correctAnswer" class="custom-control-input"
+                        formControlName="correctAnswer" value="A">
+                      <label class="custom-control-label" for="correctAnswer1">A</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline float-left">
+                      <input type="radio" id="correctAnswer2" checked name="correctAnswer" class="custom-control-input"
+                        formControlName="correctAnswer" value="B">
+                      <label class="custom-control-label" for="correctAnswer2">B</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline float-left">
+                      <input type="radio" id="correctAnswer3" checked name="correctAnswer" class="custom-control-input"
+                        formControlName="correctAnswer" value="C">
+                      <label class="custom-control-label" for="correctAnswer3">C</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline float-left">
+                      <input type="radio" id="correctAnswer4" checked name="correctAnswer" class="custom-control-input"
+                        formControlName="correctAnswer" value="D">
+                      <label class="custom-control-label" for="correctAnswer4">D</label>
+                    </div>
+                    <small class="form-text text-muted danger"
+                      *ngIf="submitted && questionForm.get('correctAnswer').errors?.required">
+                      Please select Answer</small>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-actions pull-right">
+                <button type="button" class="btn btn-raised btn-warning mr-1" (click)="backClicked()">
+                  Cancel
+                </button>
+                <button type="submit" class="btn btn-raised btn-primary" [disabled]="inProcess">
+                  {{ label }}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .dib {
+    display: inline-block;
+  }
+
+  .ngb-tp-input-container .btn[class*="btn-"] {
+    margin-bottom: 0 !important;
+  }
+</style>

@@ -1,0 +1,44 @@
+.in-logo-img {
+    width: 150px;
+}
+
+@media screen and (max-width: 990px) {
+    .in-logo-img {
+        margin-left: -24px;
+    }
+    .top-nav{
+        padding: 0 14px;
+        .top-nav-container {
+            position: relative;
+        }
+    }
+    .m-top-login {
+        position: absolute;
+        right: 4px;
+        top: 8px;    
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .in-logo-img {
+        width: 120px;
+        margin-left: -28px;
+    }
+    .top-nav{
+        padding: 0 24px;
+        .top-nav-container {
+            position: relative;
+        }
+    }
+    .m-top-login {
+        position: absolute;
+        right: 4px;
+        top: 8px;    
+    }
+    .dn-btn {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.875rem;
+        line-height: 1.5;
+        border-radius: 0.2rem;
+    }
+}

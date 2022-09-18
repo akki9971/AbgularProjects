@@ -1,0 +1,11 @@
+<ng-container [ngSwitch]="examId">
+  <ng-container *ngSwitchCase="9">
+    <app-exam-university-form3 [examId]="examId" [university]="university"></app-exam-university-form3>
+  </ng-container>
+  <ng-container *ngSwitchCase="10">
+    <app-exam-university-form2 [examId]="examId" [university]="university"></app-exam-university-form2>
+  </ng-container>
+  <ng-container *ngSwitchCase="11">
+    <app-exam-university-form1 [examId]="examId" [university]="university"></app-exam-university-form1>
+  </ng-container>
+</ng-container>

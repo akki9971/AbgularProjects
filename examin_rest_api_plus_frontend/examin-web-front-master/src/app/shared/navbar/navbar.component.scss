@@ -1,0 +1,30 @@
+@media screen and (max-width: 991px) {
+    .ex-logo {
+        width: 130px;
+        float: left;
+        margin-top: 16px;
+        img {
+            width: 105px;
+        }
+    }
+    .mob_noti {
+        width: 44px;
+        float: left;
+    }
+    .mob_user {
+        width: 90px;
+        float: left;
+    }
+    .mob_nav-right {
+        float: right;margin-top: 10px
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 2500px) {
+    .ex-logo {
+        display: none
+    }
+    .mob_nav-right {
+        display: none;
+    }
+}
